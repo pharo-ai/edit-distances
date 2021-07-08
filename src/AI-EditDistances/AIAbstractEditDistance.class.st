@@ -6,7 +6,7 @@ Class {
 
 { #category : #accessing }
 AIAbstractEditDistance >> distanceBetween: anObject and: anotherObject [
-	" Answer a <Number> "
+	" See superimplementor's comment "
 	
 	self subclassResponsibility
 ]

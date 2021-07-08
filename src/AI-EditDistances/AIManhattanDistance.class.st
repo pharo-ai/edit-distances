@@ -8,5 +8,5 @@ Class {
 AIManhattanDistance >> distanceBetween: anObject and: anotherObject [
 	" See superimplementor's comment "
 	
-	
+	^ anObject manhattanDistanceTo: anotherObject
 ]

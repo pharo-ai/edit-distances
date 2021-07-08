@@ -8,5 +8,6 @@ Class {
 AIEuclideanDistance >> distanceBetween: anObject and: anotherObject [
 	" See superimplementor's comment "
 	
+	^ anObject euclideanDistanceTo: anotherObject
 	
 ]
