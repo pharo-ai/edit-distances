@@ -14,6 +14,10 @@
   - [Version management](#version-management)
 - [License](#license)
 
+# Description
+
+Provides methods to determine the distance between two objects, for example, between Strings. Edit distances are defined as "The minimum number of insertions, deletions, and substitutions required to transform one string into the other". Edit-based distances for which such weights can be defined are usually refered to as generalized distances. These methods are independent of a searching algorithm, i.e. Levenshtein or Hamming can be applied separately to a searching algorithm.
+
 # Installation
 
 [//]: # (pi)
@@ -44,8 +48,6 @@ If you want to add the AIEditDistances to your Metacello Baselines or Configurat
 #(3 45 7 2) distanceTo: #(2 54 13 15) using: AICosineSimilarityDistance new.
 'zork' distanceTo: 'fork' using: AILevenshteinDistance new.
 ```
-
-# Description
 
 # Contribute
 
