@@ -16,7 +16,18 @@
 
 # Description
 
-Provides methods to determine the distance between two objects, for example, between Strings. Edit distances are defined as "The minimum number of insertions, deletions, and substitutions required to transform one string into the other". Edit-based distances for which such weights can be defined are usually refered to as generalized distances. These methods are independent of a searching algorithm, i.e. Levenshtein or Hamming can be applied separately to a searching algorithm.
+Provides methods to determine the distance between two objects, for example, between Strings. Edit distances are defined as "The minimum number of insertions, deletions, and substitutions required to transform one string into the other". Edit-based distances for which such weights can be defined are usually refered to as generalized distances. These methods are independent of a searching algorithm, i.e. Levenshtein or Hamming edit distances can be applied separately to a searching algorithm.
+
+  - An edit distance does NOT count matches.
+  - Some commonly referred "edit distances" compare corresponding elements and require objects of equal length (examples: Euclidean, Manhattan, Hamming,...)
+  - To speed up computation, some distances are based in "tokens", and also referred as token-based distances (example: Cosine similarity).
+
+# Implemented distances
+
+  - Euclidean norm, also known as Euclidean length, L2 norm, L2 distance, l^2 norm
+  - Manhattan distance, also known as City Block Distance.
+  - Cosine similarity, note this is not the same as TF-IDF.
+  - Levenshtein distance
 
 # Installation
 
