@@ -10,7 +10,7 @@ Provides methods to determine the distance between two objects, for example, bet
   - Some commonly referred "edit distances" compare corresponding elements and require objects of equal length (examples: Euclidean, Manhattan, Hamming,...)
   - To speed up computation, some distances are based in "tokens", and also referred as token-based distances (example: Cosine similarity).
 
-# Implemented distances
+## Implemented distances
 
   - Euclidean norm, also known as Euclidean length, L2 norm, L2 distance, l^2 norm
   - Manhattan distance, also known as City Block Distance.
