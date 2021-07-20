@@ -27,7 +27,7 @@ Metacello new
   load
 ```
 
-## How to depend on it?
+# How to depend on it?
 
 If you want to add the AIEditDistances to your Metacello Baselines or Configurations, copy and paste the following expression:
 ```smalltalk
