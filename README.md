@@ -21,10 +21,11 @@ Provides methods to determine the distance between two objects, for example, bet
 
 [//]: # (pi)
 ```smalltalk
-Metacello new
-  repository: 'github://pharo-ai/edit-distances/src';
-  baseline: 'AIEditDistances';
-  load
+EpMonitor disableDuring: [
+	Metacello new
+		repository: 'github://pharo-ai/edit-distances/src';
+		baseline: 'AIEditDistances';
+		load ]
 ```
 
 # How to depend on it?
