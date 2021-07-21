@@ -41,3 +41,14 @@ ObjectTest >> testDistanceToUsingAIManhattanDistance [
 	actual := 10.
 	self assert: (result closeTo: actual)
 ]
+
+{ #category : #'*AI-EditDistances-Tests' }
+ObjectTest >> testDistanceToUsingAISzymkiewiczSimpsonDistance [
+
+	| result actual |
+	result := #( 1 2 3 4 5 6 )
+		          distanceTo: #( 1 2 3 )
+		          using: AISzymkiewiczSimpsonDistance.
+	actual := 1.
+	self assert: (result closeTo: actual)
+]
