@@ -40,8 +40,8 @@ spec
 # How to use it?
 
 ```smalltalk  
-#(0 3 4 5) distanceTo: #(7 6 3 -1) using: AIEuclideanDistance new.
-#(10 20 10) distanceTo: #(10 20 20) using: AIManhattanDistance new.
-#(3 45 7 2) distanceTo: #(2 54 13 15) using: AICosineSimilarityDistance new.
-'zork' distanceTo: 'fork' using: AILevenshteinDistance new.
+#(0 3 4 5) distanceTo: #(7 6 3 -1) using: AIEuclideanDistance.
+#(10 20 10) distanceTo: #(10 20 20) using: AIManhattanDistance.
+#(3 45 7 2) distanceTo: #(2 54 13 15) using: AICosineSimilarityDistance.
+'zork' distanceTo: 'fork' using: AILevenshteinDistance.
 ```
