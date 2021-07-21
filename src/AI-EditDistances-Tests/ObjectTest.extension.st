@@ -46,8 +46,8 @@ ObjectTest >> testDistanceToUsingAIManhattanDistance [
 ObjectTest >> testDistanceToUsingAISzymkiewiczSimpsonDistance [
 
 	| result actual |
-	result := #( 1 2 3 4 5 6 )
-		          distanceTo: #( 1 2 3 )
+	result := #( 1 2 3 4 5 6 ) asSet
+		          distanceTo: #( 1 2 3 ) asSet
 		          using: AISzymkiewiczSimpsonDistance.
 	actual := 1.
 	self assert: (result closeTo: actual)
