@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #accessing }
-AIAbstractEditDistance >> distanceBetween: anObject and: anotherObject [
+AIAbstractEditDistance class >> distanceBetween: anObject and: anotherObject [
 	" See superimplementor's comment "
 	
 	self subclassResponsibility
