@@ -19,6 +19,25 @@ Array >> euclideanDistanceTo: anArray [
 ]
 
 { #category : #'*AI-EditDistances' }
+Array >> kendallTauDistanceTo: anArray [
+
+	| disagreements allPairs |
+	disagreements := 0.
+	allPairs := (1 to: self size) combinations: 2.
+	allPairs do: [ :pair | 
+		| i j inversion1 inversion2 |
+		i := pair first.
+		j := pair second.
+		inversion1 := (self at: i) > (self at: j) and: [ 
+			              (anArray at: i) < (anArray at: j) ].
+		inversion2 := (self at: i) < (self at: j) and: [ 
+			              (anArray at: i) > (anArray at: j) ].
+		(inversion1 or: [ inversion2 ]) ifTrue: [ 
+			disagreements := disagreements + 1 ] ].
+	^ disagreements
+]
+
+{ #category : #'*AI-EditDistances' }
 Array >> levenshteinDistanceTo: anArray [
 	" Answer a <Number> representing the Levenshtein distance between self and anArray "
 
