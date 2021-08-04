@@ -4,11 +4,11 @@ I am the abstract class for all the distances algorithms
 Class {
 	#name : #AIAbstractEditDistance,
 	#superclass : #Object,
-	#category : #'AI-EditDistances'
+	#category : #'AI-EditDistances-Distances'
 }
 
 { #category : #accessing }
-AIAbstractEditDistance class >> distanceBetween: anObject and: anotherObject [
+AIAbstractEditDistance >> distanceBetween: anObject and: anotherObject [
 	" See superimplementor's comment "
 	
 	self subclassResponsibility

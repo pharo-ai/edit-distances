@@ -6,11 +6,11 @@ More info on: [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_d
 Class {
 	#name : #AILevenshteinDistance,
 	#superclass : #AIAbstractEditDistance,
-	#category : #'AI-EditDistances'
+	#category : #'AI-EditDistances-Distances'
 }
 
 { #category : #accessing }
-AILevenshteinDistance class >> distanceBetween: anObject and: anotherObject [
+AILevenshteinDistance >> distanceBetween: anObject and: anotherObject [
 
 	^ anObject levenshteinDistanceTo: anotherObject
 ]

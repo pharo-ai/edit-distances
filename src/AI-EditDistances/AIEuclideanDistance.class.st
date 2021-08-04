@@ -6,11 +6,11 @@ More info on: [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_dista
 Class {
 	#name : #AIEuclideanDistance,
 	#superclass : #AIAbstractEditDistance,
-	#category : #'AI-EditDistances'
+	#category : #'AI-EditDistances-Distances'
 }
 
 { #category : #accessing }
-AIEuclideanDistance class >> distanceBetween: anObject and: anotherObject [
+AIEuclideanDistance >> distanceBetween: anObject and: anotherObject [
 
 	^ anObject euclideanDistanceTo: anotherObject
 ]

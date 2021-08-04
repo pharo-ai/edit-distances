@@ -6,11 +6,11 @@ More info: [Overlap coefficient](https://en.wikipedia.org/wiki/Overlap_coefficie
 Class {
 	#name : #AISzymkiewiczSimpsonDistance,
 	#superclass : #AIAbstractEditDistance,
-	#category : #'AI-EditDistances'
+	#category : #'AI-EditDistances-Distances'
 }
 
 { #category : #accessing }
-AISzymkiewiczSimpsonDistance class >> distanceBetween: aSet and: anotherSet [
+AISzymkiewiczSimpsonDistance >> distanceBetween: aSet and: anotherSet [
 
 	^ aSet szymkiewiczSimpsonDistanceTo: anotherSet
 ]
