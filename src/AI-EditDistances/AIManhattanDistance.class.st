@@ -6,11 +6,11 @@ More info: [Manhattan distance](https://computervision.fandom.com/wiki/Manhattan
 Class {
 	#name : #AIManhattanDistance,
 	#superclass : #AIAbstractEditDistance,
-	#category : #'AI-EditDistances'
+	#category : #'AI-EditDistances-Distances'
 }
 
 { #category : #accessing }
-AIManhattanDistance class >> distanceBetween: anObject and: anotherObject [
+AIManhattanDistance >> distanceBetween: anObject and: anotherObject [
 
 	^ anObject manhattanDistanceTo: anotherObject
 ]

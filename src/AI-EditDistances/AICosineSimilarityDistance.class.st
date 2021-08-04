@@ -6,11 +6,11 @@ More info: [Cosine distance](https://www.machinelearningplus.com/nlp/cosine-simi
 Class {
 	#name : #AICosineSimilarityDistance,
 	#superclass : #AIAbstractEditDistance,
-	#category : #'AI-EditDistances'
+	#category : #'AI-EditDistances-Distances'
 }
 
 { #category : #accessing }
-AICosineSimilarityDistance class >> distanceBetween: anObject and: anotherObject [
+AICosineSimilarityDistance >> distanceBetween: anObject and: anotherObject [
 	" See superimplementor's comment "
 	
 	^ anObject cosineSimilarityDistanceTo: anotherObject
