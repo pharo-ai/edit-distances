@@ -16,11 +16,11 @@ BaselineOfAIEditDistances >> baseline: spec [
 
 		"Packages"
 		spec
-			package: 'AI-EditDistances';
+			package: 'AI-EditDistances'
+			with: [ spec requires: #( 'PolyMath' ) ];
 			package: 'AI-EditDistances-Tests'
 			with: [ spec requires: #( 'AI-EditDistances' ) ].
-
-		"self defineGroups: spec" ]
+		self defineGroups: spec ]
 ]
 
 { #category : #baselines }
