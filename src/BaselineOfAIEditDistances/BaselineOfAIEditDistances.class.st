@@ -33,6 +33,5 @@ BaselineOfAIEditDistances >> polyMath: spec [
 
 	spec baseline: 'PolyMath' with: [ 
 		spec
-			loads: #( 'Core' );
 			repository: 'github://PolyMathOrg/PolyMath:master/src' ]
 ]
