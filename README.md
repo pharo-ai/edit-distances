@@ -17,6 +17,8 @@ Provides methods to determine the distance between two objects, for example, bet
   - Manhattan distance, also known as City Block Distance.
   - Cosine similarity, note this is not the same as TF-IDF.
   - Levenshtein distance
+  - Kendall Tau distance
+  - Szymkiewicz-Simpson coefficient
 
 # How to install it?
 
