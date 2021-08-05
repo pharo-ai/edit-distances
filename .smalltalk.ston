@@ -4,5 +4,11 @@ SmalltalkCISpec {
       #baseline : 'AIEditDistances',
       #directory : 'src'
     }
-  ]
+  ],
+   #testing : {
+    // Adding this classes because we have defined test as extensions on those classes
+    #include : {
+      #classes : [ #ObjectTest, #ArrayTest, #SetTest ]
+    }
+  }
 }
