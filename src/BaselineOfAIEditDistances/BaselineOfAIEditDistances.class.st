@@ -12,10 +12,7 @@ BaselineOfAIEditDistances >> baseline: spec [
 
 	<baseline>
 	spec for: #common do: [ "Dependencies"
-		spec
-			baseline: 'PolyMath'
-			with: [ 
-			spec repository: 'github://PolyMathOrg/PolyMath:master/src' ].
+		self polyMath: spec.
 
 		"Packages"
 		spec
@@ -29,4 +26,13 @@ BaselineOfAIEditDistances >> baseline: spec [
 			with: #( 'AI-EditDistances' 'AI-EditDistances-Tests' );
 			group: 'All' with: #( 'Core' 'Tests' );
 			group: 'default' with: #( 'All' ) ]
+]
+
+{ #category : #baselines }
+BaselineOfAIEditDistances >> polyMath: spec [
+
+	spec baseline: 'PolyMath' with: [ 
+		spec
+			loads: #( 'Core' );
+			repository: 'github://PolyMathOrg/PolyMath:master/src' ]
 ]
