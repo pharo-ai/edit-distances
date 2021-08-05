@@ -20,12 +20,18 @@ BaselineOfAIEditDistances >> baseline: spec [
 			package: 'AI-EditDistances-Tests'
 			with: [ spec requires: #( 'AI-EditDistances' ) ].
 
-		spec
-			group: 'Core' with: #( 'AI-EditDistances' );
-			group: 'Tests'
-			with: #( 'AI-EditDistances' 'AI-EditDistances-Tests' );
-			group: 'All' with: #( 'Core' 'Tests' );
-			group: 'default' with: #( 'All' ) ]
+		"self defineGroups: spec" ]
+]
+
+{ #category : #baselines }
+BaselineOfAIEditDistances >> defineGroups: spec [
+
+	spec
+		group: 'Core' with: #( 'AI-EditDistances' );
+		group: 'Tests'
+		with: #( 'AI-EditDistances' 'AI-EditDistances-Tests' );
+		group: 'All' with: #( 'Core' 'Tests' );
+		group: 'default' with: #( 'All' )
 ]
 
 { #category : #baselines }
