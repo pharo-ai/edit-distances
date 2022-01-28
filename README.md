@@ -4,7 +4,7 @@
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![license-badge](https://img.shields.io/badge/license-MIT-blue.svg)](https://img.shields.io/badge/license-MIT-blue.svg)
 
-# Description
+## Description
 
 Provides methods to determine the distance between two objects, for example, between Strings. Those objects, often represents documents. Normally they are strings but also they can be arrays of numbers that represent a document.
 
@@ -20,7 +20,7 @@ The distance between the two documents is defined as "The minimum number of inse
 - [How to depend on it](#how-to-depend-on-it)
 - [Implemented distances](#implemented-distances)
 
-# How to install it
+## How to install it
 
 [//]: # (pi)
 ```smalltalk
@@ -31,7 +31,7 @@ EpMonitor disableDuring: [
 		load ]
 ```
 
-# How to depend on it
+## How to depend on it
 
 If you want to add the AIEditDistances to your Metacello Baselines or Configurations, copy and paste the following expression:
 ```smalltalk
