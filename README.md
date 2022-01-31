@@ -119,5 +119,69 @@ The Kendall tau rank distance is a metric that counts the number of pairwise dis
 
 Kendall tau distance is also called bubble-sort distance since it is equivalent to the number of swaps that the bubble sort algorithm would take to place one list in the same order as the other list. The Kendall tau distance was created by Maurice Kendall. 
 
+This distance a a little special. The distance itself is the number of discordant pairs that there is between the two ranked lists. But, often the result is normalized. In this implementation we normalize the distance by default. To not normalize the result you must send the message `normalizeResult: false`.
+
+```st
+kendallTauDistance := AIKendallTauDistance new.
+kendallTauDistance normalizeResult: false.
+```
+
+There are two normalizers implemented. If no normalizer is specified, then the default normalized will be used. `AIKendallTauDistance class>>#defaultNormalizer`. Which is the `AIBKendallTauNormalizer`.
+
+- The first normalizer is  `AIBKendallTauNormalizer`. It uses the following formula to normalize the discordant pairs. This is the default normalizer.
+
+$tau_b = (P - Q) / sqrt((P + Q + T) * (P + Q + U))$
+
+Where P is the number of concordant pairs, Q the number of discordant pairs, T the number of ties only in x, and U the number of ties only in y. If a tie occurs for the same pair in both x and y, it is not added to either T or U.
+
+- The second normalizer that we have is the `AICKendallTauNormalizer`. It has the following formula:
+
+$tau_c = 2 (P - Q) / (n**2 * (m - 1) / m)$
+
+Where P is the number of concordant pairs, Q the number of discordant pairs. n is the total number of samples, and m is the number of unique values in either x or y, whichever is smaller.
+
+Example with normalization:
+
+```st
+#(1 2 3 4 5) distanceTo: #(3 4 1 2 5) using: AIKendallTauDistance new. "(1/5)"
+
+kendallTauDistance := AIKendallTauDistance new.
+kendallTauDistance distanceBetween: #( 1 2 3 4 5 ) and: #(3 4 1 2 5 ). "(1/5)"
+```
+
+Example using another normalizer:
+
+```st
+#(1 2 3 4 5) distanceTo: #(3 4 1 2 5) using: AIKendallTauDistance new. "(1/5)"
+
+kendallTauDistance := AIKendallTauDistance new.
+kendallTauDistance useNormalizer: AICKendallTauNormalizer.
+
+kendallTauDistance distanceBetween: #( 1 2 3 4 5 ) and: #(3 4 1 2 5 ). "(1/5)"
+```
+
+Example without normalization:
+
+```st
+#(1 2 3 4 5) distanceTo: #(3 4 1 2 5) using: AIKendallTauDistance new. "(1/5)"
+
+kendallTauDistance := AIKendallTauDistance new.
+kendallTauDistance normalizeResult: false.
+
+kendallTauDistance distanceBetween: #( 1 2 3 4 5 ) and: #(3 4 1 2 5 ). "4"
+```
 
 ### Szymkiewicz-Simpson coefficient
+
+Also called overlap coefficient, is a similarity measure that measures the overlap between two finite sets.
+
+```st
+#( 1000 2 0.5 3 6 88 99 ) asSet
+	distanceTo: #( 1000 0.5 99 ) asSet
+	using: AISzymkiewiczSimpsonDistance new. "1.0"
+
+overlapCoefficient := AISzymkiewiczSimpsonDistance new.
+overlapCoefficient
+	distanceBetween: #( 1000 2 0.5 3 6 88 99 ) asSet
+	and: #( 1000 0.5 99 ) asSet. "1.0"
+```
