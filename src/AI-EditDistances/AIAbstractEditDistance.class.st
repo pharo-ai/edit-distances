@@ -7,7 +7,7 @@ Class {
 	#category : #'AI-EditDistances-Distances'
 }
 
-{ #category : #accessing }
+{ #category : #api }
 AIAbstractEditDistance >> distanceBetween: anObject and: anotherObject [
 	" See superimplementor's comment "
 	

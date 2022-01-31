@@ -9,7 +9,7 @@ Class {
 	#category : #'AI-EditDistances-Distances'
 }
 
-{ #category : #accessing }
+{ #category : #api }
 AILevenshteinDistance >> distanceBetween: anObject and: anotherObject [
 
 	^ anObject levenshteinDistanceTo: anotherObject

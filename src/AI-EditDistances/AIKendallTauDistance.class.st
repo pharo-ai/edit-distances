@@ -25,7 +25,7 @@ AIKendallTauDistance class >> defaultNormalizer [
 	^ AIBKendallTauNormalizer
 ]
 
-{ #category : #accessing }
+{ #category : #api }
 AIKendallTauDistance >> distanceBetween: xRankedList and: yRankedList [
 
 	| indexCombinations |

@@ -9,7 +9,7 @@ Class {
 	#category : #'AI-EditDistances-Distances'
 }
 
-{ #category : #accessing }
+{ #category : #api }
 AIEuclideanDistance >> distanceBetween: anObject and: anotherObject [
 
 	^ anObject euclideanDistanceTo: anotherObject

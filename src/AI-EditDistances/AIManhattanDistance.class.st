@@ -9,7 +9,7 @@ Class {
 	#category : #'AI-EditDistances-Distances'
 }
 
-{ #category : #accessing }
+{ #category : #api }
 AIManhattanDistance >> distanceBetween: anObject and: anotherObject [
 
 	^ anObject manhattanDistanceTo: anotherObject

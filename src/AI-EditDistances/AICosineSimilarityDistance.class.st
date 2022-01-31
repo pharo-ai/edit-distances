@@ -9,7 +9,7 @@ Class {
 	#category : #'AI-EditDistances-Distances'
 }
 
-{ #category : #accessing }
+{ #category : #api }
 AICosineSimilarityDistance >> distanceBetween: anObject and: anotherObject [
 	" See superimplementor's comment "
 	

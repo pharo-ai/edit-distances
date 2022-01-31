@@ -9,7 +9,7 @@ Class {
 	#category : #'AI-EditDistances-Distances'
 }
 
-{ #category : #accessing }
+{ #category : #api }
 AISzymkiewiczSimpsonDistance >> distanceBetween: aSet and: anotherSet [
 
 	^ aSet szymkiewiczSimpsonDistanceTo: anotherSet
