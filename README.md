@@ -144,7 +144,9 @@ Example with normalization:
 
 ```st
 #(1 2 3 4 5) distanceTo: #(3 4 1 2 5) using: AIKendallTauDistance new. "(1/5)"
+```
 
+```st
 kendallTauDistance := AIKendallTauDistance new.
 kendallTauDistance distanceBetween: #( 1 2 3 4 5 ) and: #(3 4 1 2 5 ). "(1/5)"
 ```
@@ -153,7 +155,9 @@ Example using another normalizer:
 
 ```st
 #(1 2 3 4 5) distanceTo: #(3 4 1 2 5) using: AIKendallTauDistance new. "(1/5)"
+```
 
+```st
 kendallTauDistance := AIKendallTauDistance new.
 kendallTauDistance useNormalizer: AICKendallTauNormalizer.
 
@@ -164,7 +168,9 @@ Example without normalization:
 
 ```st
 #(1 2 3 4 5) distanceTo: #(3 4 1 2 5) using: AIKendallTauDistance new. "(1/5)"
+```
 
+```st
 kendallTauDistance := AIKendallTauDistance new.
 kendallTauDistance normalizeResult: false.
 
@@ -179,7 +185,9 @@ Also called overlap coefficient, is a similarity measure that measures the overl
 #( 1000 2 0.5 3 6 88 99 ) asSet
 	distanceTo: #( 1000 0.5 99 ) asSet
 	using: AISzymkiewiczSimpsonDistance new. "1.0"
+```
 
+```st
 overlapCoefficient := AISzymkiewiczSimpsonDistance new.
 overlapCoefficient
 	distanceBetween: #( 1000 2 0.5 3 6 88 99 ) asSet
