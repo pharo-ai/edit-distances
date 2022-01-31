@@ -13,7 +13,8 @@ Class {
 		'discordantPairs',
 		'totalPairs',
 		'normalizerClass',
-		'concordantPairs'
+		'concordantPairs',
+		'willWeNormalizeTheResult'
 	],
 	#category : #'AI-EditDistances-Distances'
 }
@@ -29,29 +30,31 @@ AIKendallTauDistance >> distanceBetween: xRankedList and: yRankedList [
 
 	| indexCombinations |
 	self putValuesInZero.
-
 	indexCombinations := (1 to: xRankedList size) combinations: 2.
+
 	indexCombinations do: [ :indexPair | 
 		| i j inversion1 inversion2 isXiTied isYjTied |
 		i := indexPair first.
 		j := indexPair second.
 
 		inversion1 := (xRankedList at: i) > (xRankedList at: j) and: [ 
-			              (yRankedList at: i) < (yRankedList at: j) ].
+			(yRankedList at: i) < (yRankedList at: j) ].
 		inversion2 := (xRankedList at: i) < (xRankedList at: j) and: [ 
-			              (yRankedList at: i) > (yRankedList at: j) ].
+			(yRankedList at: i) > (yRankedList at: j) ].
+		
 		isXiTied := (xRankedList at: i) = (xRankedList at: j).
 		isYjTied := (yRankedList at: i) = (yRankedList at: j).
+		
 		(inversion1 or: inversion2)
 			ifTrue: [ discordantPairs := discordantPairs + 1 ]
 			ifFalse: [ "Increase concordant pairs only if there are no ties"
-				(isXiTied or: isYjTied) ifFalse: [ 
-					concordantPairs := concordantPairs + 1 ] ].
+				(isXiTied or: isYjTied) ifFalse: [ concordantPairs := concordantPairs + 1 ] ].
 
 		"If a tie occurs for the same pair in both x and y, it is not added to neither."
 		(isXiTied xor: isYjTied) ifTrue: [ 
 			isXiTied ifTrue: [ tiesInX := tiesInX + 1 ].
 			isYjTied ifTrue: [ tiesInY := tiesInY + 1 ] ] ].
+
 	^ self normalizedDistanceBetween: xRankedList and: yRankedList
 ]
 
@@ -59,24 +62,34 @@ AIKendallTauDistance >> distanceBetween: xRankedList and: yRankedList [
 AIKendallTauDistance >> initialize [
 
 	super initialize.
+	willWeNormalizeTheResult := true.
 	self putValuesInZero
+]
+
+{ #category : #accessing }
+AIKendallTauDistance >> normalizeResult: aBoolean [
+
+	willWeNormalizeTheResult := aBoolean
 ]
 
 { #category : #calculating }
 AIKendallTauDistance >> normalizedDistanceBetween: xRankedList and: yRankedList [
 
-	"The distance is the discordant pairs"
+	"The distance is the number of discordant pairs"
 
-	normalizerClass ifNil: [ 
-		normalizerClass := self class defaultNormalizer ].
-	normalizer := normalizerClass new
-		              concordantPairs: concordantPairs;
-		              discordantPairs: discordantPairs;
-		              tiesInX: tiesInX;
-		              tiesInY: tiesInY;
-		              numberOfSamples: xRankedList size;
-		              minUniqueValues:
-			              (xRankedList asSet size min: yRankedList asSet size).
+	willWeNormalizeTheResult ifFalse: [ ^ discordantPairs ].
+
+	normalizerClass ifNil: [ normalizerClass := self class defaultNormalizer ].
+	
+	normalizer := normalizerClass new.
+	normalizer
+		concordantPairs: concordantPairs;
+		discordantPairs: discordantPairs;
+		tiesInX: tiesInX;
+		tiesInY: tiesInY;
+		numberOfSamples: xRankedList size;
+		minUniqueValues: (xRankedList asSet size min: yRankedList asSet size).
+	
 	^ normalizer normalize
 ]
 

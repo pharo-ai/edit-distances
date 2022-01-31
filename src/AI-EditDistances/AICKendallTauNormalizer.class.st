@@ -23,7 +23,6 @@ AICKendallTauNormalizer >> normalize [
 
 	| numerator denominator |
 	numerator := 2 * (concordantPairs - discordantPairs).
-	denominator := numberOfSamples squared
-	               * (minUniqueValues - 1 / minUniqueValues).
+	denominator := numberOfSamples squared * (minUniqueValues - 1 / minUniqueValues).
 	^ numerator / denominator
 ]

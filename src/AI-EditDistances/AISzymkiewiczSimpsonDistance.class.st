@@ -1,5 +1,5 @@
 "
-The overlap coefficient,[1] or Szymkiewicz–Simpson coefficient, is a similarity measure that measures the overlap between two finite sets.
+The overlap coefficient, or Szymkiewicz–Simpson coefficient, is a similarity measure that measures the overlap between two finite sets.
 
 More info: [Overlap coefficient](https://en.wikipedia.org/wiki/Overlap_coefficient)
 "
