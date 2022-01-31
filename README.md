@@ -130,13 +130,13 @@ There are two normalizers implemented. If no normalizer is specified, then the d
 
 - The first normalizer is  `AIBKendallTauNormalizer`. It uses the following formula to normalize the discordant pairs. This is the default normalizer.
 
-$$ tau_b = /frac{P - Q}{/sqrt{(P + Q + T) * (P + Q + U)}} $$
+`tau_b = (P - Q) / sqrt((P + Q + T) * (P + Q + U))`
 
 Where P is the number of concordant pairs, Q the number of discordant pairs, T the number of ties only in x, and U the number of ties only in y. If a tie occurs for the same pair in both x and y, it is not added to either T or U.
 
 - The second normalizer that we have is the `AICKendallTauNormalizer`. It has the following formula:
 
-$$ tau_c = /frac{2*(P - Q)}{(n^2 * /frac{m - 1}{m}} $$
+`tau_c = 2 (P - Q) / (n**2 * (m - 1) / m)`
 
 Where P is the number of concordant pairs, Q the number of discordant pairs. n is the total number of samples, and m is the number of unique values in either x or y, whichever is smaller.
 
