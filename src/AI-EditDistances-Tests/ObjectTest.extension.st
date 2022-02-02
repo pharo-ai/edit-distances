@@ -83,6 +83,20 @@ ObjectTest >> testDistanceToUsingAIKendallTauDistanceDefaultNormalizer [
 ]
 
 { #category : #'*AI-EditDistances-Tests' }
+ObjectTest >> testDistanceToUsingAIKendallTauDistanceNoNormalizer [
+
+	| result kendallTauDistance |
+	kendallTauDistance := AIKendallTauDistance new
+		normalizeResult: false;
+		yourself.
+	result := #( 12 2 1 12 2 )
+		          distanceTo: #( 1 4 7 1 0 )
+		          using: kendallTauDistance.
+
+	self assert: result equals: 6
+]
+
+{ #category : #'*AI-EditDistances-Tests' }
 ObjectTest >> testDistanceToUsingAILevenshteinDistance [
 
 	| result actual |
