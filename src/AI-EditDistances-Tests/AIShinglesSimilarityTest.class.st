@@ -18,6 +18,7 @@ AIShinglesSimilarityTest >> setUp [
 
 { #category : #tests }
 AIShinglesSimilarityTest >> testEncode [
+
 	| sequence encodedSequence expected |
 	
 	sequence := #(lorem ipsum dolor sit amet).
@@ -36,6 +37,7 @@ AIShinglesSimilarityTest >> testEncode [
 
 { #category : #tests }
 AIShinglesSimilarityTest >> testEncodeLongSequence [
+
 	| sequence encodedSequence expected |
 	
 	sequence := #(lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua).
@@ -48,43 +50,43 @@ AIShinglesSimilarityTest >> testEncodeLongSequence [
 
 { #category : #tests }
 AIShinglesSimilarityTest >> testNoSimilarity [
+
 	| sequence1 sequence2 similarity |
-	
-	sequence1 := #(lorem ipsum dolor sit amet).
-	sequence2 := #(one two three).
-	
+	sequence1 := #( lorem ipsum dolor sit amet ).
+	sequence2 := #( one two three ).
+
 	similarity := metric distanceBetween: sequence1 and: sequence2.
-	
-	self assert: similarity equals: 0.
+
+	self assert: similarity equals: 0
 ]
 
 { #category : #tests }
 AIShinglesSimilarityTest >> testShingleFor [
+
 	| tokens shingle expected |
-	
-	tokens := #(lorem ipsum dolor).
+	tokens := #( lorem ipsum dolor ).
 	shingle := metric shingleFor: tokens.
-	
+
 	expected := 43853569. "#(lorem ipsum dolor) hash"
 
-	self assert: shingle equals: expected.
-	
+	self assert: shingle equals: expected
 ]
 
 { #category : #tests }
 AIShinglesSimilarityTest >> testSimilarityBetweenAnd [
+
 	| sequence1 sequence2 similarity |
-	
-	sequence1 := #(lorem ipsum dolor sit amet).
-	sequence2 := #(hello world lorem ipsum).
-	
+	sequence1 := #( lorem ipsum dolor sit amet ).
+	sequence2 := #( hello world lorem ipsum ).
+
 	similarity := metric distanceBetween: sequence1 and: sequence2.
-	
-	self assert: similarity closeTo: ((1/4) + (1/3)) / 2.
+
+	self assert: similarity closeTo: 1 / 4 + (1 / 3) / 2
 ]
 
 { #category : #tests }
-AIShinglesSimilarityTest >> testSimilarityLondSequenceSmallChange [
+AIShinglesSimilarityTest >> testSimilarityLongSequenceSmallChange [
+
 	| sequence1 sequence2 similarity |
 	
 	sequence1 := #(lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua).
@@ -97,10 +99,10 @@ AIShinglesSimilarityTest >> testSimilarityLondSequenceSmallChange [
 
 { #category : #tests }
 AIShinglesSimilarityTest >> testSimilaritySameSequence [
+
 	| sequence similarity |
-	
-	sequence := #(lorem ipsum dolor sit amet).
+	sequence := #( lorem ipsum dolor sit amet ).
 	similarity := metric distanceBetween: sequence and: sequence.
-	
-	self assert: similarity equals: 1.
+
+	self assert: similarity equals: 1
 ]

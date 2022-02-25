@@ -1,3 +1,6 @@
+"
+Abstract class for the normalizer of kendall tau. See the comment of the subclasses.
+"
 Class {
 	#name : #AIAbstractKendallTauNormalizer,
 	#superclass : #Object,

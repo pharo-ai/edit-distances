@@ -1,0 +1,22 @@
+Extension { #name : #AIEuclideanDistanceTest }
+
+{ #category : #'*AI-EditDistances-Tests' }
+AIEuclideanDistanceTest >> testDistanceToUsingAIEuclideanDistance [
+
+	| result actual |
+	result := #( 0 3 4 5 )
+		          distanceTo: #( 7 6 3 -1 )
+		          using: AIEuclideanDistance new.
+	actual := 9.74679434481.
+	self assert: (result closeTo: actual)
+]
+
+{ #category : #'*AI-EditDistances-Tests' }
+AIEuclideanDistanceTest >> testEuclideanDistanceTo [
+
+	| result actual |
+	
+	result := #(0 3 4 5) euclideanDistanceTo: #(7 6 3 -1).
+	actual := 9.74679434481.
+	self assert: (result closeTo: actual). 
+]

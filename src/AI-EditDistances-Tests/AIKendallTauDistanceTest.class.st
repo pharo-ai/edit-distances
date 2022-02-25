@@ -1,29 +1,11 @@
-Extension { #name : #ObjectTest }
+Class {
+	#name : #AIKendallTauDistanceTest,
+	#superclass : #TestCase,
+	#category : #'AI-EditDistances-Tests'
+}
 
 { #category : #'*AI-EditDistances-Tests' }
-ObjectTest >> testDistanceToUsingAICosineSimilarityDistance [
-
-	| result actual |
-	result := #( 3 45 7 2 )
-		          distanceTo: #( 2 54 13 15 )
-		          using: AICosineSimilarityDistance new.
-	actual := 0.9722.
-	self assert: (result closeTo: actual)
-]
-
-{ #category : #'*AI-EditDistances-Tests' }
-ObjectTest >> testDistanceToUsingAIEuclideanDistance [
-
-	| result actual |
-	result := #( 0 3 4 5 )
-		          distanceTo: #( 7 6 3 -1 )
-		          using: AIEuclideanDistance new.
-	actual := 9.74679434481.
-	self assert: (result closeTo: actual)
-]
-
-{ #category : #'*AI-EditDistances-Tests' }
-ObjectTest >> testDistanceToUsingAIKendallTauDistanceCNormalizer [
+AIKendallTauDistanceTest >> testDistanceToUsingAIKendallTauDistanceCNormalizer [
 
 	| result actual kendallTauDistance |
 	kendallTauDistance := AIKendallTauDistance new useNormalizer:
@@ -54,7 +36,7 @@ ObjectTest >> testDistanceToUsingAIKendallTauDistanceCNormalizer [
 ]
 
 { #category : #'*AI-EditDistances-Tests' }
-ObjectTest >> testDistanceToUsingAIKendallTauDistanceDefaultNormalizer [
+AIKendallTauDistanceTest >> testDistanceToUsingAIKendallTauDistanceDefaultNormalizer [
 
 	| result actual |
 	result := #( 12 2 1 12 2 )
@@ -83,7 +65,7 @@ ObjectTest >> testDistanceToUsingAIKendallTauDistanceDefaultNormalizer [
 ]
 
 { #category : #'*AI-EditDistances-Tests' }
-ObjectTest >> testDistanceToUsingAIKendallTauDistanceNoNormalizer [
+AIKendallTauDistanceTest >> testDistanceToUsingAIKendallTauDistanceNoNormalizer [
 
 	| result kendallTauDistance |
 	kendallTauDistance := AIKendallTauDistance new
@@ -94,35 +76,4 @@ ObjectTest >> testDistanceToUsingAIKendallTauDistanceNoNormalizer [
 		          using: kendallTauDistance.
 
 	self assert: result equals: 6
-]
-
-{ #category : #'*AI-EditDistances-Tests' }
-ObjectTest >> testDistanceToUsingAILevenshteinDistance [
-
-	| result actual |
-	result := 'zork' distanceTo: 'fork' using: AILevenshteinDistance new.
-	actual := 1.
-	self assert: result equals: actual
-]
-
-{ #category : #'*AI-EditDistances-Tests' }
-ObjectTest >> testDistanceToUsingAIManhattanDistance [
-
-	| result actual |
-	result := #( 10 20 10 )
-		          distanceTo: #( 10 20 20 )
-		          using: AIManhattanDistance new.
-	actual := 10.
-	self assert: (result closeTo: actual)
-]
-
-{ #category : #'*AI-EditDistances-Tests' }
-ObjectTest >> testDistanceToUsingAISzymkiewiczSimpsonDistance [
-
-	| result actual |
-	result := #( 1 2 3 4 5 6 ) asSet
-		          distanceTo: #( 1 2 3 ) asSet
-		          using: AISzymkiewiczSimpsonDistance new.
-	actual := 1.
-	self assert: (result closeTo: actual)
 ]
