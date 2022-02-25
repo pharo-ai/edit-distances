@@ -6,9 +6,6 @@ SmalltalkCISpec {
     }
   ],
    #testing : {
-    #include : {
-      #classes : [ #ObjectTest, #ArrayTest, #SetTest ]
-    },
     #coverage : {
       #packages : [ 'AI-EditDistances*' ]
     }
