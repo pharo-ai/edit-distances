@@ -10,9 +10,13 @@ Class {
 }
 
 { #category : #api }
-AICosineSimilarityDistance >> distanceBetween: anObject and: anotherObject [
-	" See superimplementor's comment "
+AICosineSimilarityDistance >> distanceBetween: anArray and: anotherArray [
+	| num size1 size2 |
+
+	num := (anArray * anotherArray) sum.
+	size1 := (anArray * anArray) sum sqrt.
+	size2 := (anotherArray * anotherArray) sum sqrt.
 	
-	^ anObject cosineSimilarityDistanceTo: anotherObject
+	^ num / (size1 * size2)
 	
 ]
