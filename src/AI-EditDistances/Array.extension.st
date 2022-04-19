@@ -25,9 +25,3 @@ Array >> levenshteinDistanceTo: anArray [
 					 a < b ]) first ] ].
 	^ stab at: stab rowCount at: stab columnCount
 ]
-
-{ #category : #'*AI-EditDistances' }
-Array >> manhattanDistanceTo: anArray [
-
-	^ (self - anArray) abs sum. 
-]

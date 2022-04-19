@@ -18,8 +18,9 @@ AIManhattanDistanceTest >> testDistanceToUsingAIManhattanDistance [
 { #category : #tests }
 AIManhattanDistanceTest >> testManhattanDistanceTo [
 
-	| result actual |
-	result := #( 10 20 10 ) manhattanDistanceTo: #( 10 20 20 ).
+	| result actual metric |
+	metric := AIManhattanDistance new.
+	result := metric distanceBetween: #( 10 20 10 ) and: #( 10 20 20 ).
 	actual := 10.
 	self assert: (result closeTo: actual)
 ]

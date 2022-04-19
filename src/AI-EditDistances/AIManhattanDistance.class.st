@@ -10,7 +10,7 @@ Class {
 }
 
 { #category : #api }
-AIManhattanDistance >> distanceBetween: anObject and: anotherObject [
+AIManhattanDistance >> distanceBetween: anArray and: anotherArray [
 
-	^ anObject manhattanDistanceTo: anotherObject
+	^ (anArray  - anotherArray ) abs sum 
 ]
