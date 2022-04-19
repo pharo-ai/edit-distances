@@ -1,12 +1,6 @@
 Extension { #name : #Array }
 
 { #category : #'*AI-EditDistances' }
-Array >> euclideanDistanceTo: anArray [
-
-	^ ((self - anArray) raisedTo: 2) sum sqrt.
-]
-
-{ #category : #'*AI-EditDistances' }
 Array >> levenshteinDistanceTo: anArray [
 	" Answer a <Number> representing the Levenshtein distance between self and anArray "
 

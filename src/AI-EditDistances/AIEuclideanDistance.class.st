@@ -12,5 +12,5 @@ Class {
 { #category : #api }
 AIEuclideanDistance >> distanceBetween: anObject and: anotherObject [
 
-	^ anObject euclideanDistanceTo: anotherObject
+	^ ((anObject  - anotherObject) raisedTo: 2) sum sqrt.
 ]
