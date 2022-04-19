@@ -12,5 +12,8 @@ Class {
 { #category : #api }
 AISzymkiewiczSimpsonDistance >> distanceBetween: aSet and: anotherSet [
 
-	^ aSet szymkiewiczSimpsonDistanceTo: anotherSet
+	| intersection minSize |
+	intersection := (aSet intersection: anotherSet ) size.
+	minSize := aSet size min: anotherSet size.
+	^ (intersection / minSize) asFloat
 ]
