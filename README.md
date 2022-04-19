@@ -6,11 +6,13 @@
 
 ## Table of contents
 
+- [Table of contents](#table-of-contents)
 - [Description](#description)
 - [How to install it](#how-to-install-it)
 - [How to depend on it](#how-to-depend-on-it)
 - [Implemented distances](#implemented-distances)
-- [Examples](#example-1-using-manhattan-distance)
+  - [Example 1: Using Manhattan distance](#example-1-using-manhattan-distance)
+  - [Example 2: Using Levenshtein distance](#example-2-using-levenshtein-distance)
 
 
 ## Description
@@ -19,7 +21,7 @@ For more information please refer to the [Pharo-AI wiki](https://github.com/phar
 
 Edit distance is a way of quantifying how dissimilar two strings are to one another by counting the minimum number of operations required to transform one string into the other. The distance between the two documents is defined as "The minimum number of insertions, deletions, and substitutions required to transform one string into the other". Edit-based distances for which such weights can be defined are usually refered to as generalized distances. These methods are independent of a searching algorithm, i.e. Levenshtein or Hamming edit distances can be applied separately to a searching algorithm.
 
-Edit distances find applications in natural language processing, where automatic spelling correction can determine candidate corrections for a misspelled word by selecting words from a dictionary that have a low distance to the word in question.
+Edit Distances find applications in natural language processing, where automatic spelling correction can determine candidate corrections for a misspelled word by selecting words from a dictionary that have a low distance to the word in question.
 
 This package provides methods to determine the distance between two objects, for example, between Strings. Those objects, often represents documents. Normally they are strings but also they can be arrays of numbers that represent a document.
 
