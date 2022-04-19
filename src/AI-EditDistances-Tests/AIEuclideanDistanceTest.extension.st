@@ -14,9 +14,10 @@ AIEuclideanDistanceTest >> testDistanceToUsingAIEuclideanDistance [
 { #category : #'*AI-EditDistances-Tests' }
 AIEuclideanDistanceTest >> testEuclideanDistanceTo [
 
-	| result actual |
+	| result actual metric |
 	
-	result := #(0 3 4 5) euclideanDistanceTo: #(7 6 3 -1).
+	metric := AIEuclideanDistance new.
+	result := metric distanceBetween: #(0 3 4 5) and: #(7 6 3 -1).
 	actual := 9.74679434481.
 	self assert: (result closeTo: actual). 
 ]

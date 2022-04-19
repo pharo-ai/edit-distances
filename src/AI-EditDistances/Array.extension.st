@@ -1,24 +1,6 @@
 Extension { #name : #Array }
 
 { #category : #'*AI-EditDistances' }
-Array >> cosineSimilarityDistanceTo: anArray [
-
-	| num size1 size2 |
-
-	num := (self * anArray) sum.
-	size1 := (self * self) sum sqrt.
-	size2 := (anArray * anArray ) sum sqrt.
-	
-	^ num / (size1 * size2)
-]
-
-{ #category : #'*AI-EditDistances' }
-Array >> euclideanDistanceTo: anArray [
-
-	^ ((self - anArray) raisedTo: 2) sum sqrt.
-]
-
-{ #category : #'*AI-EditDistances' }
 Array >> levenshteinDistanceTo: anArray [
 	" Answer a <Number> representing the Levenshtein distance between self and anArray "
 
@@ -42,10 +24,4 @@ Array >> levenshteinDistanceTo: anArray [
 					 ((stab at: j - 1 at: i - 1) + cost) } asSortedCollection: [ :a :b | 
 					 a < b ]) first ] ].
 	^ stab at: stab rowCount at: stab columnCount
-]
-
-{ #category : #'*AI-EditDistances' }
-Array >> manhattanDistanceTo: anArray [
-
-	^ (self - anArray) abs sum. 
 ]

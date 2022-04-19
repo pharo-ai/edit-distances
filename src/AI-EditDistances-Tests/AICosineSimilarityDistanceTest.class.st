@@ -7,9 +7,10 @@ Class {
 { #category : #'*AI-EditDistances-Tests' }
 AICosineSimilarityDistanceTest >> testCosineSimilarityDistanceTo [
 
-	| result actual |
+	| result actual metric |
+	metric := AICosineSimilarityDistance new.
 	
-	result := #(3 45 7 2) cosineSimilarityDistanceTo: #(2 54 13 15).
+	result := metric distanceBetween: #(3 45 7 2) and: #(2 54 13 15) .
 	actual := 0.9722.
 	self assert: (result closeTo: actual). 
 ]

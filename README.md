@@ -6,11 +6,13 @@
 
 ## Table of contents
 
+- [Table of contents](#table-of-contents)
 - [Description](#description)
 - [How to install it](#how-to-install-it)
 - [How to depend on it](#how-to-depend-on-it)
 - [Implemented distances](#implemented-distances)
-- [Examples](#example-1-using-manhattan-distance)
+  - [Example 1: Using Manhattan distance](#example-1-using-manhattan-distance)
+  - [Example 2: Using Levenshtein distance](#example-2-using-levenshtein-distance)
 
 
 ## Description
