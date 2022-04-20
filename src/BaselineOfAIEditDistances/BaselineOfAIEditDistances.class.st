@@ -11,15 +11,15 @@ Class {
 BaselineOfAIEditDistances >> baseline: spec [
 
 	<baseline>
-	spec for: #common do: [ "Dependencies"
+	spec for: #common do: [
+		"External dependencies"
 		self polyMath: spec.
 
 		"Packages"
 		spec
-			package: 'AI-EditDistances'
-			with: [ spec requires: #( 'PolyMath' ) ];
-			package: 'AI-EditDistances-Tests'
-			with: [ spec requires: #( 'AI-EditDistances' ) ].
+			package: 'AI-EditDistances' with: [ spec requires: #( 'PolyMathGroup' ) ];
+			package: 'AI-EditDistances-Tests' with: [ spec requires: #( 'AI-EditDistances' ) ].
+
 		self defineGroups: spec ]
 ]
 
@@ -37,8 +37,8 @@ BaselineOfAIEditDistances >> defineGroups: spec [
 { #category : #baselines }
 BaselineOfAIEditDistances >> polyMath: spec [
 
-	spec baseline: 'PolyMath' with: [ 
+	spec baseline: 'AIExternalDependencies' with: [ 
 		spec
-			loads: #( 'Core' );
-			repository: 'github://PolyMathOrg/PolyMath:master/src' ]
+			loads: #( 'PolyMathGroup' );
+			repository: 'github://pharo-ai/external-dependencies' ]
 ]
