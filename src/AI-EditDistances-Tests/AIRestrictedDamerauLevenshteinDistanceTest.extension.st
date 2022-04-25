@@ -3,73 +3,37 @@ Extension { #name : #AIRestrictedDamerauLevenshteinDistanceTest }
 { #category : #'*AI-EditDistances-Tests' }
 AIRestrictedDamerauLevenshteinDistanceTest >> testDistanceToUsingAIRestrictedDamerauLevenshteinDistance [
 
-	| result actual |
-	result := levenshteinRestricted distanceBetween: 'zork' and: 'fork'.
-	actual := 1.
-	self assert: result equals: actual
+
+	self assert: (levenshteinRestricted distanceBetween: 'zork' and: 'fork') equals: 1.
+
 ]
 
 { #category : #'*AI-EditDistances-Tests' }
-AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceOneSwapTwoAdd [
+AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceOneAddOneSwap [
 
-	| firstString secondString expected actual |
-	firstString :=  'agag'.
-	secondString := 'aggaag'.
-
-	actual := levenshteinRestricted distanceBetween: firstString and: secondString.
-	expected := 2.
-
-	self assert: actual equals: expected
+	self assert: (levenshteinRestricted distanceBetween: 'an act' and: 'a cat') equals: 2.
 ]
 
 { #category : #'*AI-EditDistances-Tests' }
 AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTowReplaceOneAddOneSwap [
 
-	| firstString secondString expected actual |
-	firstString := 'HONDA'.
-	secondString := 'HYUNADI'.
-
-	actual := levenshteinRestricted distanceBetween: firstString and: secondString.
-	expected := 4.
-
-	self assert: actual equals: expected
+	self assert: (levenshteinRestricted distanceBetween: 'HONDA' and: 'HYUNADI') equals: 4.
 ]
 
 { #category : #'*AI-EditDistances-Tests' }
-AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTransposition [
+AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoAdd [
 
-	| firstString secondString expected actual |
-	firstString := 'an act'.
-	secondString := 'a cat'.
-
-	actual := levenshteinRestricted distanceBetween: firstString and: secondString.
-	expected := 2.
-
-	self assert: actual equals: expected
+	self assert: (levenshteinRestricted distanceBetween: 'agag' and: 'aggaag') equals: 2.
 ]
 
 { #category : #'*AI-EditDistances-Tests' }
 AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoSwapThreeReplace [
 
-	| firstString secondString expected actual |
-	firstString := 'agaaloli'.
-	secondString := 'gananail'.
-
-	actual := levenshteinRestricted distanceBetween: firstString and: secondString.
-	expected := 5.
-
-	self assert: actual equals: expected
+	self assert: (levenshteinRestricted distanceBetween: 'agaaloli' and: 'gananail') equals: 5.
 ]
 
 { #category : #'*AI-EditDistances-Tests' }
 AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoSwapTwoReplace [
 
-	| firstString secondString expected actual |
-	firstString :=  'hannah'.
-	secondString := 'nahhan'.
-
-	actual := levenshteinRestricted distanceBetween: firstString and: secondString.
-	expected := 4.
-
-	self assert: actual equals: expected
+	self assert: (levenshteinRestricted distanceBetween: 'hannah' and: 'nahhan') equals: 4.
 ]
