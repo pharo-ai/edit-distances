@@ -31,19 +31,6 @@ String >> levenshteinDistanceTo: anotherString [
 ]
 
 { #category : #'*AI-EditDistances' }
-String >> minLevenshtein:distanceMatrix i:i j:j to: anotherString [
-	"in progress"	
-			
-	| cost |
-	cost := self setCost: anotherString i: i j: j.
-	distanceMatrix at: i at: j put: {
-				(distanceMatrix at: i at: j - 1) + 1 .
-				(distanceMatrix at: i - 1 at: j) + 1 .
-				(distanceMatrix at: i - 1 at: j - 1) + cost
-			} min.
-]
-
-{ #category : #'*AI-EditDistances' }
 String >> recursiveLevenshteinDistanceTo: anotherString [
 	"Recursive implementation of the Levenshtein distance between two strings"
 	| cost |
