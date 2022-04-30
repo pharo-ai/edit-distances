@@ -11,49 +11,98 @@ Class {
 	#category : #'AI-EditDistances-Distances'
 }
 
+{ #category : #private }
+AIRestrictedDamerauLevenshteinDistance >> checkSwapsInMatrix: aMatrix at: i at: j basedOn: firstString and: secondString [
+
+	"If while calculating we passed upon two caracters that can be swapped - we take the min between the min calculated before and the (i - 2,j - 2) case value + 1"
+
+	(i > 2 & (j > 2) and: [ 
+		 (firstString at: j - 1) = (secondString at: i - 2) and: [ 
+			 (firstString at: j - 2) = (secondString at: i - 1) ] ]) ifTrue: [ 
+		aMatrix at: i at: j put: { 
+				(aMatrix at: i at: j).
+				((aMatrix at: i - 2 at: j - 2) + 1) } min ]
+]
+
 { #category : #api }
 AIRestrictedDamerauLevenshteinDistance >> distanceBetween: firstString and: secondString [
 
-	| distanceMatrix cost |
+	| distanceMatrix |
 	
-	"If one of the strings or both are empty we return the other string size"
+	"If one of the strings is empty return the other string size"
 	firstString isEmpty ifTrue: [ ^ secondString size ].
 	secondString isEmpty ifTrue: [ ^ firstString size ].
 	
-	"Define our matrix with size of our strings"
+	distanceMatrix := self distanceMatrixBasedOn: firstString and: secondString.
+
+	^ distanceMatrix
+		at: distanceMatrix numberOfRows
+		at: distanceMatrix numberOfColumns
+]
+
+{ #category : #private }
+AIRestrictedDamerauLevenshteinDistance >> distanceMatrixBasedOn: firstString and: secondString [
+
+	| distanceMatrix |
 	distanceMatrix := Array2D
 		rows: secondString size + 1
 		columns: firstString size + 1.
+
+	self fillFirstRowAndColumn: distanceMatrix.
+	
+	self fillStartingFromSecondRowAndColumn: distanceMatrix
+		basedOn: firstString
+		and: secondString.
+		
+	^ distanceMatrix
+]
+
+{ #category : #private }
+AIRestrictedDamerauLevenshteinDistance >> fillCellInMatrix: aMatrix at: i at: j basedOn: firstString and: secondString [
+
+	| cost leftCell upperCell upperLeftCell |
+	
+	"Setting the cost"
+	cost := (firstString at: j - 1) = (secondString at: i - 1)
+		ifTrue: [ 0 ]
+		ifFalse: [ 1 ].
+		
+	leftCell := (aMatrix at: i at: j - 1) + 1.
+	upperCell := (aMatrix at: i - 1 at: j) + 1.
+	upperLeftCell := (aMatrix at: i - 1 at: j - 1) + cost.
+	
+	"Calculate the min between the left, the upper-left and the upper case of our current case"
+	aMatrix at: i at: j put:
+		{ leftCell . upperCell . upperLeftCell } min.
+]
+
+{ #category : #private }
+AIRestrictedDamerauLevenshteinDistance >> fillFirstRowAndColumn: aMatrix [
 	
 	"Fill the first row and column starting with 1"
-	1 to: distanceMatrix rowCount do: [ :i | 
-	distanceMatrix at: i at: 1 put: i - 1 ].
-	1 to: distanceMatrix columnCount do: [ :j | 
-	distanceMatrix at: 1 at: j put: j - 1 ].
+	1 to: aMatrix rowCount do: [ :i | 
+		aMatrix at: i at: 1 put: i - 1 ].
+	
+	2 to: aMatrix columnCount do: [ :j | 
+		aMatrix at: 1 at: j put: j - 1 ].
+]
 
+{ #category : #private }
+AIRestrictedDamerauLevenshteinDistance >> fillStartingFromSecondRowAndColumn: aMatrix basedOn: firstString and: secondString [
+	
 	"Begin the loop from the second row/column"
-	2 to: distanceMatrix rowCount do: [ :i | 
-		2 to: distanceMatrix columnCount do: [ :j | 
-			"Setting the cost"
-			cost := (firstString at: j - 1) = (secondString at: i - 1)
-		        ifTrue: [ 0 ]
-		        ifFalse: [ 1 ].
-			"Calculate the min between the left, the upper-left and the upper case of our current case"
-			distanceMatrix at: i at: j put:
-				{ 
-					((distanceMatrix at: i at: j - 1) + 1).
-					((distanceMatrix at: i - 1 at: j) + 1).
-					((distanceMatrix at: i - 1 at: j - 1) + cost) } min.
-
-			"If while calculating we passed upon two caracters that can be swapped - we take the min between the min calculated before and the (i - 2,j - 2) case value + 1"
-			(i > 2 & (j > 2) and: [ 
-				 (firstString at: j - 1) = (secondString at: i - 2) and: [ 
-					 (firstString at: j - 2) = (secondString at: i - 1) ] ])
-			ifTrue: [ 
-				distanceMatrix at: i at: j put:
-					{
-						(distanceMatrix at: i at: j).
-						((distanceMatrix at: i - 2 at: j - 2) + 1) } min ] ] ].
-
-	^ distanceMatrix at: distanceMatrix rowCount at: distanceMatrix columnCount
+	2 to: aMatrix numberOfRows do: [ :i | 
+		2 to: aMatrix numberOfColumns do: [ :j | 
+			
+			self fillCellInMatrix: aMatrix
+				at: i
+				at: j
+				basedOn: firstString
+				and: secondString.
+				
+			self checkSwapsInMatrix: aMatrix
+				at: i
+				at: j
+				basedOn: firstString
+				and: secondString ] ].
 ]
