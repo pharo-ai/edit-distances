@@ -55,15 +55,15 @@ AIDamerauLevenshteinDistance >> calculateDistanceBetween: firstString and: secon
 	maxDistance := firstString size + secondString size.
 	self fillFirstTwoRowsAndColumnsMaxDistance: maxDistance.
 
-	"last_row := Array new: alphabetSize"
-	"last_row := Array new: 256. 
+	"rowCharactersWithIndexes := Array new: alphabetSize"
+	"rowCharactersWithIndexes := Array new: 256. 
 	1 to: last_row size do: [ :i | last_row at: i put: 0 ]."
 	rowCharactersWithIndexes := Dictionary new.
 
 	3 to: distanceMatrix rowCount do: [ :i | 
 		firstStringCurrentCharacter := firstString at: i - 2.
 
-		lastMatchCol := 3. "Column of last match on this row" "????????????????????????????????????????????????????????????"
+		lastMatchCol := 3.
 
 		3 to: distanceMatrix columnCount do: [ :j | 
 			secondStringCurrentCharacter := secondString at: j - 2.
@@ -74,17 +74,10 @@ AIDamerauLevenshteinDistance >> calculateDistanceBetween: firstString and: secon
 				ifTrue: [ 0 ]
 				ifFalse: [ 1 ].
 
-			distanceMatrix at: i at: j put: { 
-					((distanceMatrix at: i at: j - 1) + 1).
-					((distanceMatrix at: i - 1 at: j) + 1).
-					((distanceMatrix at: i - 1 at: j - 1) + cost).
-					((distanceMatrix at: lastMatchingRow at: lastMatchCol)
-					 + (i - (lastMatchingRow - 1)) + 1 + (j - (lastMatchCol - 1))) }
-					min.
-			cost = 0 ifTrue: [ lastMatchCol := j ] ]. "if there was a match then pdate with current row "
+			self calculateCostWith: cost at: i at: j using: lastMatchingRow and: lastMatchCol.
+			cost = 0 ifTrue: [ lastMatchCol := j ] ].
 
-		rowCharactersWithIndexes at: firstStringCurrentCharacter put: i ].
-	^ distanceMatrix
+		rowCharactersWithIndexes at: firstStringCurrentCharacter put: i ]
 ]
 
 { #category : #api }
@@ -93,7 +86,7 @@ AIDamerauLevenshteinDistance >> distanceBetween: firstString and: secondString [
 	firstString isEmpty ifTrue: [ ^ secondString size ].
 	secondString isEmpty ifTrue: [ ^ firstString size ].
 	
-	distanceMatrix := self calculateDistanceBetween: firstString and: secondString.
+	self calculateDistanceBetween: firstString and: secondString.
 	
 	^ distanceMatrix
 		at: distanceMatrix rowCount
