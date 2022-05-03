@@ -1,3 +1,15 @@
+"
+The Damerau-Lavenshtein distance is a string metric for measuring the edit distance between two sequences.
+
+The difference between this distance and the restricted Damerau-Levenshtein distance consists in that the restricted one computes the number of edit operations needed to make the strings equal under the condition that no substring is edited more than once, **whereas this algorithm presents no such restriction.**
+
+See also: Restricted Damerau-Levenshtein distance comment class
+
+More info on: [Damerau-Levenshtein distance](https://en.wikipedia.org/wiki/Damerau–Levenshtein_distance)
+
+
+
+"
 Class {
 	#name : #AIDamerauLevenshteinDistance,
 	#superclass : #AIAbstractEditDistance,
