@@ -61,25 +61,25 @@ AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceRemov
 ]
 
 { #category : #'*AI-EditDistances-Tests' }
-AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTowReplaceOneAddOneSwap [
-
-	self assert: (levenshteinRestricted distanceBetween: 'HONDA' and: 'HYUNADI') equals: 4.
-]
-
-{ #category : #'*AI-EditDistances-Tests' }
-AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoAdd [
+AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoAdds [
 
 	self assert: (levenshteinRestricted distanceBetween: 'agag' and: 'aggaag') equals: 2.
 ]
 
 { #category : #'*AI-EditDistances-Tests' }
-AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoSwapThreeReplace [
+AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoReplacesOneAddOneSwap [
+
+	self assert: (levenshteinRestricted distanceBetween: 'HONDA' and: 'HYUNADI') equals: 4.
+]
+
+{ #category : #'*AI-EditDistances-Tests' }
+AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoSwapsThreeReplaces [
 
 	self assert: (levenshteinRestricted distanceBetween: 'agaaloli' and: 'gananail') equals: 5.
 ]
 
 { #category : #'*AI-EditDistances-Tests' }
-AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoSwapTwoReplace [
+AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoSwapsTwoReplaces [
 
 	self assert: (levenshteinRestricted distanceBetween: 'hannah' and: 'nahhan') equals: 4.
 ]
