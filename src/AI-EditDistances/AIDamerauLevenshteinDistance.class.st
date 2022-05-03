@@ -40,7 +40,7 @@ AIDamerauLevenshteinDistance >> calculateDistanceBetween: firstString and: secon
 ]
 
 { #category : #private }
-AIDamerauLevenshteinDistance >> calculateMinValue: cost at: i at: j using: lastMatchingRow and: lastMatchCol [
+AIDamerauLevenshteinDistance >> calculateMinValue: cost at: i at: j using: lastMatchingRow and: lastMatchColumn [
 
 	| addition deletion substitution transposition minValue upperCell leftCell upperLeftCell |
 	upperCell := distanceMatrix at: i at: j - 1.
@@ -52,11 +52,11 @@ AIDamerauLevenshteinDistance >> calculateMinValue: cost at: i at: j using: lastM
 	upperLeftCell := distanceMatrix at: i - 1 at: j - 1.
 	substitution := upperLeftCell + cost.
 
-	transposition := (lastMatchingRow > 1 and: [ lastMatchCol > 1 ])
-		ifTrue: [ (distanceMatrix at: lastMatchingRow - 1 at: lastMatchCol - 1)
+	transposition := (lastMatchingRow > 1 and: [ lastMatchColumn > 1 ])
+		ifTrue: [ (distanceMatrix at: lastMatchingRow - 1 at: lastMatchColumn - 1)
 			+ (i - lastMatchingRow - 1)
 			+ 1
-			+ (j - lastMatchCol - 1) ]
+			+ (j - lastMatchColumn - 1) ]
 		ifFalse: [ distanceMatrix at: 1 at: 1 ].
 
 	minValue := { addition . deletion . substitution . transposition } min.
