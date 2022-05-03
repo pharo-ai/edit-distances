@@ -3,7 +3,7 @@ Extension { #name : #AIDamerauLevenshteinDistanceTest }
 { #category : #'*AI-EditDistances-Tests' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceOneAddOneSwap [
 
-	self assert: (damerauLevenshtein distanceBetween: 'a abct' and: 'a cat') equals: 2.
+	self assert: (damerauLevenshtein distanceBetween: 'a cat' and: 'a abct') equals: 2.
 ]
 
 { #category : #'*AI-EditDistances-Tests' }
