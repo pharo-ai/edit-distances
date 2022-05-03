@@ -84,3 +84,20 @@ AIDamerauLevenshteinDistanceTest >> testDistanceToUsingAIDamerauLevenshteinDista
 	self assert: (damerauLevenshtein distanceBetween: 'zork' and: 'fork') equals: 1.
 
 ]
+
+{ #category : #tests }
+AIDamerauLevenshteinDistanceTest >> testFillFirstTwoRowsAndColumnsMaxDistance [
+
+	| max result |
+	damerauLevenshtein distanceMatrix: (Array2D rows: 5 columns: 5).
+	max := 100.
+	result := Array2D new.
+	result rows: 5 columns: 5 contents:
+		{ { max . max . max . max . max } .
+		  { max . 0 . 1 . 2 . 3 } . 
+		  { max . 1 . nil . nil . nil } .
+		  { max . 2 . nil . nil . nil } .
+		  { max . 3 . nil . nil . nil } } flattened.
+	damerauLevenshtein fillFirstTwoRowsAndColumnsMaxDistance: max.
+	self assert: damerauLevenshtein distanceMatrix equals: result
+]

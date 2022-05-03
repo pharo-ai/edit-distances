@@ -48,13 +48,15 @@ AIDamerauLevenshteinDistance >> calculateCostWith: cost at: i at: j using: lastM
 AIDamerauLevenshteinDistance >> calculateDistanceBetween: firstString and: secondString [
 
 	| cost lastMatchCol secondStringCurrentCharacter firstStringCurrentCharacter lastMatchingRow rowCharactersWithIndexes maxDistance |
+	Halt now.
 	distanceMatrix := Array2D
 		rows: firstString size + 2
 		columns: secondString size + 2.
 
 	maxDistance := firstString size + secondString size.
+	Halt now.
 	self fillFirstTwoRowsAndColumnsMaxDistance: maxDistance.
-
+	Halt now.
 	"rowCharactersWithIndexes := Array new: alphabetSize"
 	"rowCharactersWithIndexes := Array new: 256. 
 	1 to: last_row size do: [ :i | last_row at: i put: 0 ]."
@@ -93,6 +95,16 @@ AIDamerauLevenshteinDistance >> distanceBetween: firstString and: secondString [
 		at: distanceMatrix columnCount
 ]
 
+{ #category : #accessing }
+AIDamerauLevenshteinDistance >> distanceMatrix [
+	^ distanceMatrix
+]
+
+{ #category : #accessing }
+AIDamerauLevenshteinDistance >> distanceMatrix: aCollection [ 
+	distanceMatrix := aCollection
+]
+
 { #category : #api }
 AIDamerauLevenshteinDistance >> fillFirstTwoRowsAndColumnsMaxDistance: maxDistance [
 
@@ -100,10 +112,14 @@ AIDamerauLevenshteinDistance >> fillFirstTwoRowsAndColumnsMaxDistance: maxDistan
 	"It fills the first row and column with the maxDistance value and the second row and column with value starting with 0"
 
 	1 to: distanceMatrix rowCount do: [ :i | 
-		distanceMatrix at: i at: 1 put: maxDistance.
-		distanceMatrix at: i at: 2 put: i - 2 ].
+		distanceMatrix at: i at: 1 put: maxDistance ].
 	
 	1 to: distanceMatrix columnCount do: [ :j | 
-		distanceMatrix at: 1 at: j put: maxDistance.
-		distanceMatrix at: 2 at: j put: j - 2 ]
+		distanceMatrix at: 1 at: j put: maxDistance ].
+	
+	2 to: distanceMatrix rowCount do: [ :i | 
+		distanceMatrix at: i at: 2 put: i - 2 ].
+	
+	2 to: distanceMatrix columnCount do: [ :j | 
+		distanceMatrix at: 2 at: j put: j - 2 ].
 ]
