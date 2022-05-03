@@ -2,7 +2,6 @@ Class {
 	#name : #AIDamerauLevenshteinDistance,
 	#superclass : #AIAbstractEditDistance,
 	#instVars : [
-		'alphabetSize',
 		'distanceMatrix'
 	],
 	#classInstVars : [
@@ -11,76 +10,58 @@ Class {
 	#category : #'AI-EditDistances-Distances'
 }
 
-{ #category : #'as yet unclassified' }
-AIDamerauLevenshteinDistance >> alphabetSize [
-	
-	^ alphabetSize
-]
-
-{ #category : #'as yet unclassified' }
-AIDamerauLevenshteinDistance >> alphabetSize: int [
-	
-	alphabetSize := int.
-]
-
-{ #category : #'as yet unclassified' }
-AIDamerauLevenshteinDistance >> calculateCostWith: cost at: i at: j using: lastMatchingRow and: lastMatchCol [
-
-	| addition deletion substitution transposition minValue |
-	addition := (distanceMatrix at: i at: j - 1) + 1.
-	deletion := (distanceMatrix at: i - 1 at: j) + 1.
-	substitution := (distanceMatrix at: i - 1 at: j - 1) + cost.
-
-	transposition := (lastMatchingRow > 1 and: [ lastMatchCol > 1 ])
-		ifTrue: [ (distanceMatrix at: lastMatchingRow - 1 at: lastMatchCol - 1)
-			+ (i - lastMatchingRow - 1) + 1
-			+ (j - lastMatchCol - 1) ]
-		ifFalse: [ distanceMatrix at: 1 at: 1 ].
-
-	minValue := { 
-		addition.
-		deletion.
-		substitution.
-		transposition } min.
-
-	distanceMatrix at: i at: j put: minValue
-]
-
-{ #category : #api }
+{ #category : #private }
 AIDamerauLevenshteinDistance >> calculateDistanceBetween: firstString and: secondString [
 
-	| cost lastMatchCol secondStringCurrentCharacter firstStringCurrentCharacter lastMatchingRow rowCharactersWithIndexes maxDistance |
+	| cost lastMatchColumn secondStringCurrentCharacter firstStringCurrentCharacter lastMatchingRow rowCharactersWithIndexes |
+	
+	self initializeDistanceMatrixWith: firstString and: secondString.
 
-	distanceMatrix := Array2D
-		rows: firstString size + 2
-		columns: secondString size + 2.
-
-	maxDistance := firstString size + secondString size.
-	self fillFirstTwoRowsAndColumnsMaxDistance: maxDistance.
-
-	"rowCharactersWithIndexes := Array new: alphabetSize"
-	"rowCharactersWithIndexes := Array new: 256. 
-	1 to: last_row size do: [ :i | last_row at: i put: 0 ]."
 	rowCharactersWithIndexes := Dictionary new.
 
 	3 to: distanceMatrix rowCount do: [ :i | 
-		firstStringCurrentCharacter := firstString at: i - 2.
-
-		lastMatchCol := 1.
 		
-		3 to: distanceMatrix columnCount do: [ :j | 
-			secondStringCurrentCharacter := secondString at: j - 2.
+		firstStringCurrentCharacter := firstString at: i - 2.
+		lastMatchColumn := 1.
+
+		3 to: distanceMatrix columnCount do: [ :j |
 			
+			secondStringCurrentCharacter := secondString at: j - 2.
 			lastMatchingRow := rowCharactersWithIndexes at: secondStringCurrentCharacter ifAbsent: 1.
 
 			cost := secondStringCurrentCharacter = firstStringCurrentCharacter
 				ifTrue: [ 0 ]
 				ifFalse: [ 1 ].
-			cost = 0 ifTrue: [ lastMatchCol := j ].
-			
-			self calculateCostWith: cost at: i at: j using: lastMatchingRow and: lastMatchCol ].
+			cost = 0 ifTrue: [ lastMatchColumn := j ].
+
+			self calculateMinValue: cost at: i at: j using: lastMatchingRow and: lastMatchColumn ].
 
 		rowCharactersWithIndexes at: firstStringCurrentCharacter put: i ]
+]
+
+{ #category : #private }
+AIDamerauLevenshteinDistance >> calculateMinValue: cost at: i at: j using: lastMatchingRow and: lastMatchCol [
+
+	| addition deletion substitution transposition minValue upperCell leftCell upperLeftCell |
+	upperCell := distanceMatrix at: i at: j - 1.
+	addition := upperCell + 1.
+
+	leftCell := distanceMatrix at: i - 1 at: j.
+	deletion := leftCell + 1.
+	
+	upperLeftCell := distanceMatrix at: i - 1 at: j - 1.
+	substitution := upperLeftCell + cost.
+
+	transposition := (lastMatchingRow > 1 and: [ lastMatchCol > 1 ])
+		ifTrue: [ (distanceMatrix at: lastMatchingRow - 1 at: lastMatchCol - 1)
+			+ (i - lastMatchingRow - 1)
+			+ 1
+			+ (j - lastMatchCol - 1) ]
+		ifFalse: [ distanceMatrix at: 1 at: 1 ].
+
+	minValue := { addition . deletion . substitution . transposition } min.
+
+	distanceMatrix at: i at: j put: minValue
 ]
 
 { #category : #api }
@@ -106,12 +87,15 @@ AIDamerauLevenshteinDistance >> distanceMatrix: aCollection [
 	distanceMatrix := aCollection
 ]
 
-{ #category : #api }
-AIDamerauLevenshteinDistance >> fillFirstTwoRowsAndColumnsMaxDistance: maxDistance [
+{ #category : #private }
+AIDamerauLevenshteinDistance >> fillFirstTwoRowsAndColumnsWith: firstString and: secondString [
 
 
 	"It fills the first row and column with the maxDistance value and the second row and column with value starting with 0"
 
+	| maxDistance |
+	maxDistance := firstString size + secondString size.
+	
 	1 to: distanceMatrix rowCount do: [ :i | 
 		distanceMatrix at: i at: 1 put: maxDistance ].
 	
@@ -122,8 +106,15 @@ AIDamerauLevenshteinDistance >> fillFirstTwoRowsAndColumnsMaxDistance: maxDistan
 		distanceMatrix at: i at: 2 put: i - 2 ].
 	
 	2 to: distanceMatrix columnCount do: [ :j | 
-		distanceMatrix at: 2 at: j put: j - 2 ].
-	
-	"3 to: distanceMatrix rowCount do: [ :i | 
-		3 to: distanceMatrix columnCount do: [ :j | distanceMatrix at: i at: j put: 0 ] ]"
+		distanceMatrix at: 2 at: j put: j - 2 ]
+]
+
+{ #category : #private }
+AIDamerauLevenshteinDistance >> initializeDistanceMatrixWith: firstString and: secondString [
+
+	distanceMatrix := Array2D
+		rows: firstString size + 2
+		columns: secondString size + 2.
+		
+	self fillFirstTwoRowsAndColumnsWith: firstString and: secondString
 ]

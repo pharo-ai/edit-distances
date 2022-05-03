@@ -90,7 +90,7 @@ AIDamerauLevenshteinDistanceTest >> testFillFirstTwoRowsAndColumnsMaxDistance [
 
 	| max result |
 	damerauLevenshtein distanceMatrix: (Array2D rows: 5 columns: 5).
-	max := 100.
+	max := 10.
 	result := Array2D new.
 	result rows: 5 columns: 5 contents:
 		{ { max . max . max . max . max } .
@@ -98,6 +98,6 @@ AIDamerauLevenshteinDistanceTest >> testFillFirstTwoRowsAndColumnsMaxDistance [
 		  { max . 1 . nil . nil . nil } .
 		  { max . 2 . nil . nil . nil } .
 		  { max . 3 . nil . nil . nil } } flattened.
-	damerauLevenshtein fillFirstTwoRowsAndColumnsMaxDistance: max.
+	damerauLevenshtein fillFirstTwoRowsAndColumnsWith: 'AAAAA' and: 'BBBBB'.
 	self assert: damerauLevenshtein distanceMatrix equals: result
 ]
