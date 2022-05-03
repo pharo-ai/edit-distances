@@ -23,7 +23,37 @@ Class {
 }
 
 { #category : #private }
-AIDamerauLevenshteinDistance >> calculateDistanceBetween: firstString and: secondString [
+AIDamerauLevenshteinDistance >> calculateMinValue: cost at: i at: j using: lastMatchingRow and: lastMatchColumn [
+
+	"Here we calculate the value of all the possible changes we can do (addition, deletion, substitution and transposition).
+	
+	For transposition we make sure our lastMatchingRow and lastMatchColumn variables are greater than one so when calculating the value of the transposition we don't get a (0,0) cell - since it does not exist"
+
+	| addition deletion substitution transposition minValue upperCell leftCell upperLeftCell |
+	
+	upperCell := distanceMatrix at: i at: j - 1.
+	addition := upperCell + 1.
+
+	leftCell := distanceMatrix at: i - 1 at: j.
+	deletion := leftCell + 1.
+	
+	upperLeftCell := distanceMatrix at: i - 1 at: j - 1.
+	substitution := upperLeftCell + cost.
+
+	transposition := (lastMatchingRow > 1 and: [ lastMatchColumn > 1 ])
+		ifTrue: [ (distanceMatrix at: lastMatchingRow - 1 at: lastMatchColumn - 1)
+			+ (i - lastMatchingRow - 1)
+			+ 1
+			+ (j - lastMatchColumn - 1) ]
+		ifFalse: [ distanceMatrix at: 1 at: 1 ].
+
+	minValue := { addition . deletion . substitution . transposition } min.
+
+	distanceMatrix at: i at: j put: minValue
+]
+
+{ #category : #private }
+AIDamerauLevenshteinDistance >> damerauLevenshteinAlgorithmFor: firstString and: secondString [
 
 	| cost lastMatchColumn secondStringCurrentCharacter firstStringCurrentCharacter lastMatchingRow rowCharactersWithIndexes |
 	
@@ -47,33 +77,8 @@ AIDamerauLevenshteinDistance >> calculateDistanceBetween: firstString and: secon
 			cost = 0 ifTrue: [ lastMatchColumn := j ].
 
 			self calculateMinValue: cost at: i at: j using: lastMatchingRow and: lastMatchColumn ].
-
+		
 		rowCharactersWithIndexes at: firstStringCurrentCharacter put: i ]
-]
-
-{ #category : #private }
-AIDamerauLevenshteinDistance >> calculateMinValue: cost at: i at: j using: lastMatchingRow and: lastMatchColumn [
-
-	| addition deletion substitution transposition minValue upperCell leftCell upperLeftCell |
-	upperCell := distanceMatrix at: i at: j - 1.
-	addition := upperCell + 1.
-
-	leftCell := distanceMatrix at: i - 1 at: j.
-	deletion := leftCell + 1.
-	
-	upperLeftCell := distanceMatrix at: i - 1 at: j - 1.
-	substitution := upperLeftCell + cost.
-
-	transposition := (lastMatchingRow > 1 and: [ lastMatchColumn > 1 ])
-		ifTrue: [ (distanceMatrix at: lastMatchingRow - 1 at: lastMatchColumn - 1)
-			+ (i - lastMatchingRow - 1)
-			+ 1
-			+ (j - lastMatchColumn - 1) ]
-		ifFalse: [ distanceMatrix at: 1 at: 1 ].
-
-	minValue := { addition . deletion . substitution . transposition } min.
-
-	distanceMatrix at: i at: j put: minValue
 ]
 
 { #category : #api }
@@ -82,7 +87,7 @@ AIDamerauLevenshteinDistance >> distanceBetween: firstString and: secondString [
 	firstString isEmpty ifTrue: [ ^ secondString size ].
 	secondString isEmpty ifTrue: [ ^ firstString size ].
 	
-	self calculateDistanceBetween: firstString and: secondString.
+	self damerauLevenshteinAlgorithmFor:firstString and: secondString.
 	
 	^ distanceMatrix
 		at: distanceMatrix rowCount
@@ -103,7 +108,7 @@ AIDamerauLevenshteinDistance >> distanceMatrix: aCollection [
 AIDamerauLevenshteinDistance >> fillFirstTwoRowsAndColumnsWith: firstString and: secondString [
 
 
-	"It fills the first row and column with the maxDistance value and the second row and column with value starting with 0"
+	"It fills the first row and column with the maxDistance value and the second row and column with values starting with 0"
 
 	| maxDistance |
 	maxDistance := firstString size + secondString size.
