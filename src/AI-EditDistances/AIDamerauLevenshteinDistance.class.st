@@ -3,11 +3,7 @@ The Damerau-Lavenshtein distance is a string metric for measuring the edit dista
 
 The difference between this distance and the restricted Damerau-Levenshtein distance consists in that the restricted one computes the number of edit operations needed to make the strings equal under the condition that no substring is edited more than once, **whereas this algorithm presents no such restriction.**
 
-See also: Restricted Damerau-Levenshtein distance comment class
-
-More info on: [Damerau-Levenshtein distance](https://en.wikipedia.org/wiki/Damerau–Levenshtein_distance)
-
-
+See also: Restricted Damerau-Levenshtein distance comment class.
 
 "
 Class {
@@ -25,9 +21,22 @@ Class {
 { #category : #private }
 AIDamerauLevenshteinDistance >> calculateMinValue: cost at: i at: j using: lastMatchingRow and: lastMatchColumn [
 
-	"Here we calculate the value of all the possible changes we can do (addition, deletion, substitution and transposition).
+	"Here we calculate the value of all the possible operations we can do (addition, deletion, substitution and transposition).
 	
-	For transposition we make sure our lastMatchingRow and lastMatchColumn variables are greater than one so when calculating the value of the transposition we don't get a (0,0) cell - since it does not exist"
+	- Each operation costs 1.
+ 
+	- To calculate the transposition cost we do:
+						 The value of the cost before transposition which is the value of cell (distanceMatrix at: lastMatchingRow - 1 at: lastMatchColumn - 1)
+							+
+						 The distance between rows
+							+
+						 1 (for the cost of the transposition itself - since it's an operation)
+							+
+						 The distance between columns.
+						
+	- The distances that we sum here count the number of characters in between the transposed characters. We substract 1 to exclude the current cell from the count.
+						
+	- We make sure our lastMatchingRow and lastMatchColumn variables are greater than 1 so when calculating the value of this we don't get a (0,0) cell - since it 	does not 	exist."
 
 	| addition deletion substitution transposition minValue upperCell leftCell upperLeftCell |
 	
@@ -54,6 +63,12 @@ AIDamerauLevenshteinDistance >> calculateMinValue: cost at: i at: j using: lastM
 
 { #category : #private }
 AIDamerauLevenshteinDistance >> damerauLevenshteinAlgorithmFor: firstString and: secondString [
+
+	" Here we implement the Damerau-Levenshtein algorithm.
+	
+	- LastMatchingRow indicates the last row with the current column's character.
+	- LastMatchColumn indicates the last column in this row where the characters matched.
+	(Reminder : column's characters belong to the second string and row's characters to the first string) "
 
 	| cost lastMatchColumn secondStringCurrentCharacter firstStringCurrentCharacter lastMatchingRow rowCharactersWithIndexes |
 	
@@ -106,7 +121,6 @@ AIDamerauLevenshteinDistance >> distanceMatrix: aCollection [
 
 { #category : #private }
 AIDamerauLevenshteinDistance >> fillFirstTwoRowsAndColumnsWith: firstString and: secondString [
-
 
 	"It fills the first row and column with the maxDistance value and the second row and column with values starting with 0"
 
