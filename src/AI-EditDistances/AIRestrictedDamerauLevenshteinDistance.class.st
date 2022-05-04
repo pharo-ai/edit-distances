@@ -3,7 +3,6 @@ The restricted Damerau-Lavenshtein distance, also known as the optimal string al
 
 This distance differs from the classical Levenshtein distance by including transpositions among its allowable operations in addition to the three classical single-character edit operations (insertions, deletions and substitutions).
 
-More info on: [Damerau-Levenshtein distance](https://en.wikipedia.org/wiki/Damerau–Levenshtein_distance)
 "
 Class {
 	#name : #AIRestrictedDamerauLevenshteinDistance,
