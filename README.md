@@ -72,19 +72,11 @@ Or to use `aDistance distanceBetween: xCollection and: yCollection`
 ### Example 1: Using Manhattan distance
 
 ```st
-#(10 20 10) distanceTo: #(10 20 20) using: AIManhattanDistance new "10".
-```
-
-```st
 manhattanDistance := AIManhattanDistance new.
 manhattanDistance distanceBetween: #( 10 20 10 ) and: #( 10 20 20 ). "10"
 ```
 
 ### Example 2: Using Levenshtein distance
-
-```st
-'zork' distanceTo: 'fork' using: AILevenshteinDistance new.
-```
 
 ```st
 levenshteinDistance := AILevenshteinDistance new.
