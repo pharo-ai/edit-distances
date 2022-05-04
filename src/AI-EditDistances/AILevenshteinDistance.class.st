@@ -10,7 +10,31 @@ Class {
 }
 
 { #category : #api }
-AILevenshteinDistance >> distanceBetween: anObject and: anotherObject [
+AILevenshteinDistance >> distanceBetween: aString and: anotherString [
 
-	^ anObject levenshteinDistanceTo: anotherObject
+	| distanceMatrix cost |
+	aString ifEmpty: [ ^ anotherString size ].
+	anotherString ifEmpty: [ ^ aString size ].
+
+	distanceMatrix := Array2D
+		rows: anotherString size + 1
+		columns: aString size + 1.
+
+	1 to: distanceMatrix rowCount do: [ :i | 
+	distanceMatrix at: i at: 1 put: i - 1 ].
+	1 to: distanceMatrix columnCount do: [ :j | 
+	distanceMatrix at: 1 at: j put: j - 1 ].
+
+	2 to: distanceMatrix rowCount do: [ :i | 
+		2 to: distanceMatrix columnCount do: [ :j | 
+			cost := (aString at: j - 1) = (anotherString at: i - 1)
+				ifTrue: [ 0 ]
+				ifFalse: [ 1 ].
+
+			distanceMatrix at: i at: j put: { 
+				((distanceMatrix at: i at: j - 1) + 1).
+				((distanceMatrix at: i - 1 at: j) + 1).
+				((distanceMatrix at: i - 1 at: j - 1) + cost) } min ] ].
+
+	^ distanceMatrix at: distanceMatrix rowCount at: distanceMatrix columnCount
 ]
