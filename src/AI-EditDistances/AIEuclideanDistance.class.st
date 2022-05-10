@@ -10,7 +10,17 @@ Class {
 }
 
 { #category : #api }
-AIEuclideanDistance >> distanceBetween: anObject and: anotherObject [
+AIEuclideanDistance >> distanceBetween: firstPoint and: secondPoint [
 
-	^ ((anObject  - anotherObject) raisedTo: 2) sum sqrt.
+	"It follows the Euclidean distance between two points formula.
+	The code is not idiomatic because of performance. We see that writting this instead of 
+	(firstPoint - secondPoint raisedTo: 2) sum sqrt"
+
+	| sum |
+	sum := 0.0.
+	1 to: firstPoint size do: [ :i | 
+		| diff |
+		diff := (firstPoint at: i) asFloat - (secondPoint at: i) asFloat.
+		sum := sum + (diff * diff) ].
+	^ sum sqrt
 ]
