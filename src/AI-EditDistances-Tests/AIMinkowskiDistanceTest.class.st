@@ -13,7 +13,7 @@ Class {
 AIMinkowskiDistanceTest >> setUp [
 
 	super setUp.
-	metric := AIMinkowskiDistance new
+	metric := AIMinkowskiDistance p: 3
 ]
 
 { #category : #tests }
