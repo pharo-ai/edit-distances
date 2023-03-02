@@ -57,6 +57,7 @@ These are the currently implemented distance. Note that we are currently working
   - Manhattan distance, also known as City Block Distance.
   - Cosine similarity, note this is not the same as TF-IDF.
   - Levenshtein distance
+  - Hamming distance
   - Kendall Tau distance
   - Szymkiewicz-Simpson coefficient
   - Shingles similarity
