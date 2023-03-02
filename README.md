@@ -58,6 +58,8 @@ These are the currently implemented distance. Note that we are currently working
   - Cosine similarity, note this is not the same as TF-IDF.
   - Levenshtein distance
   - Hamming distance
+  - Damerau Levenshtein Distance
+  - Restricted Damerau LevenshteinDistance
   - Kendall Tau distance
   - Szymkiewicz-Simpson coefficient
   - Shingles similarity
