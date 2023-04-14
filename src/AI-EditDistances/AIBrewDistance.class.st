@@ -1,5 +1,5 @@
 "
-Given two strings, obtain the number of edits required to make the first the same as the second. It use used typically when weighing multiple potentially similar strings in a data set.
+Given two strings, obtain the number of edits required to make the first the same as the second. It is used typically when weighing multiple potentially similar strings in a data set.
 
 This algorithm separate costs for deletion (DEL) and insertion (INS) operations, so it allows you to differentiate between the two operations and assign different weights to them if needed. The edit cost can be configured by sending the `cost:` message to an instance of this class. The cost is an `Array` of positive `Integer` interpreted as:
 
