@@ -1,4 +1,6 @@
 "
+## Description
+
 Given two strings, obtain the number of edits required to make the first the same as the second. It is used typically when weighing multiple potentially similar strings in a data set.
 
 This algorithm separate costs for deletion (DEL) and insertion (INS) operations, so it allows you to differentiate between the two operations and assign different weights to them if needed. The edit cost can be configured by sending the `cost:` message to an instance of this class. The cost is an `Array` of positive `Integer` interpreted as:
@@ -8,7 +10,15 @@ This algorithm separate costs for deletion (DEL) and insertion (INS) operations,
   - Deletion (1 is the default cost)
   - Substitution (1 is the default cost)
 
+## Relation with the Wagner-Fischer algorithm
 
+Although the Brew edit distance and Wagner-Fischer algorithm are both used to compute the edit distance between two strings, there are some differences between them:
+
+- Cost of operations: In the Wagner-Fischer algorithm, the cost of insertion and deletion operations is the same, while in the Brew edit distance, you can have separate costs for deletion (DEL) and insertion (INS) operations. This allows you to differentiate between the two operations and assign different weights to them if needed.
+- Substitution operation: The Brew edit distance algorithm includes a separate substitution (SUBST) operation, making it distinct from the match (MATCH) operation. This allows you to assign a different cost to substitutions compared to matches. In the Wagner-Fischer algorithm, a substitution is treated as a combination of deletion and insertion.
+- Edit operation description: The Brew edit distance algorithm provides the description of the edits needed to transform the first string into the second one. This feature allows you to understand the specific edit operations that were performed to achieve the final edit distance. The Wagner-Fischer algorithm does not provide this information by default, although it can be modified to track the edit operations as well.
+
+In summary, the Brew edit distance offers more flexibility in terms of operation costs and provides a description of the edit operations, while the Wagner-Fischer algorithm is a more straightforward approach to calculating the edit distance between two strings.
 "
 Class {
 	#name : #AIBrewDistance,
