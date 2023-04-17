@@ -18,7 +18,7 @@ BaselineOfAIEditDistances >> baseline: spec [
 			with: [ spec repository: 'github://pharo-ai/external-dependencies' ].
 		"Packages"
 		spec
-			package: 'AI-EditDistances';
+			package: 'AI-EditDistances' with: [ spec requires: #( 'AIExternalVectorMatrix' ) ];
 			package: 'AI-EditDistances-Tests' with: [ spec requires: #( 'AI-EditDistances' ) ].
 		"Groups"
 		spec
