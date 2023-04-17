@@ -62,6 +62,8 @@ _Note that we are currently working on this project so we will be implementing m
   - Hamming distance
   - Damerau Levenshtein distance
   - Restricted Damerau Levenshtein distance
+  - Helling distance
+  - Brew distance
  
 All the distances are polymorphic. They have the same API.
 
