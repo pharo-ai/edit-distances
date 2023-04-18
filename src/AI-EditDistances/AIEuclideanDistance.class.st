@@ -11,16 +11,7 @@ Class {
 
 { #category : #api }
 AIEuclideanDistance >> distanceBetween: firstPoint and: secondPoint [
+	"It follows the Euclidean distance between two points formula"
 
-	"It follows the Euclidean distance between two points formula.
-	The code is not idiomatic because of performance. We see that writting this instead of 
-	(firstPoint - secondPoint raisedTo: 2) sum sqrt"
-
-	| sum |
-	sum := 0.0.
-	1 to: firstPoint size do: [ :i | 
-		| diff |
-		diff := (firstPoint at: i) asFloat - (secondPoint at: i) asFloat.
-		sum := sum + (diff * diff) ].
-	^ sum sqrt
+	^ (firstPoint asPMVector - secondPoint asPMVector) norm
 ]

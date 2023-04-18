@@ -38,12 +38,10 @@ AIMinkowskiDistance class >> p: anInteger [
 { #category : #api }
 AIMinkowskiDistance >> distanceBetween: firstPoint and: secondPoint [
 
-	| sum |
-	sum := 0.
-	firstPoint with: secondPoint do: [ :x :y |
-		sum := sum + ((x - y) abs raisedTo: p) ].
+	| vector |
+	vector := (firstPoint asPMVector - secondPoint asPMVector) abs raisedTo: p.
 
-	^ sum raisedTo: 1 / p
+	^ vector sum raisedTo: 1 / p
 ]
 
 { #category : #accessing }

@@ -1,5 +1,5 @@
 "
-The Manhattan distance is the absoulte sum off all the distances between coordinates.
+The Manhattan distance is defined as the first norm of the difference of two vectors. This is the absoulte sum of the difference of each coordinate.
 
 More info: [Manhattan distance](https://computervision.fandom.com/wiki/Manhattan_distance)
 "
@@ -12,5 +12,5 @@ Class {
 { #category : #api }
 AIManhattanDistance >> distanceBetween: anArray and: anotherArray [
 
-	^ (anArray  - anotherArray ) abs sum 
+	^ (anArray asPMVector - anotherArray asPMVector) firstNorm
 ]
