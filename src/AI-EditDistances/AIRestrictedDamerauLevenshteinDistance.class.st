@@ -5,12 +5,14 @@ This distance differs from the classical Levenshtein distance by including trans
 
 "
 Class {
-	#name : #AIRestrictedDamerauLevenshteinDistance,
-	#superclass : #AIAbstractEditDistance,
-	#category : #'AI-EditDistances-Distances'
+	#name : 'AIRestrictedDamerauLevenshteinDistance',
+	#superclass : 'AIAbstractEditDistance',
+	#category : 'AI-EditDistances-Distances',
+	#package : 'AI-EditDistances',
+	#tag : 'Distances'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 AIRestrictedDamerauLevenshteinDistance >> checkSwapsInMatrix: aMatrix at: i at: j basedOn: firstString and: secondString [
 
 	"If while calculating we passed upon two caracters that can be swapped - we take the min between the min calculated before and the (i - 2,j - 2) case value + 1"
@@ -23,7 +25,7 @@ AIRestrictedDamerauLevenshteinDistance >> checkSwapsInMatrix: aMatrix at: i at: 
 				((aMatrix at: i - 2 at: j - 2) + 1) } min ]
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 AIRestrictedDamerauLevenshteinDistance >> distanceBetween: firstString and: secondString [
 
 	| distanceMatrix |
@@ -39,7 +41,7 @@ AIRestrictedDamerauLevenshteinDistance >> distanceBetween: firstString and: seco
 		at: distanceMatrix numberOfColumns
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIRestrictedDamerauLevenshteinDistance >> distanceMatrixBasedOn: firstString and: secondString [
 
 	| distanceMatrix |
@@ -56,7 +58,7 @@ AIRestrictedDamerauLevenshteinDistance >> distanceMatrixBasedOn: firstString and
 	^ distanceMatrix
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIRestrictedDamerauLevenshteinDistance >> fillCellInMatrix: aMatrix at: i at: j basedOn: firstString and: secondString [
 
 	| cost leftCell upperCell upperLeftCell |
@@ -75,7 +77,7 @@ AIRestrictedDamerauLevenshteinDistance >> fillCellInMatrix: aMatrix at: i at: j 
 		{ leftCell . upperCell . upperLeftCell } min.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIRestrictedDamerauLevenshteinDistance >> fillFirstRowAndColumn: aMatrix [
 	
 	"Fill the first row and column starting with 1"
@@ -86,7 +88,7 @@ AIRestrictedDamerauLevenshteinDistance >> fillFirstRowAndColumn: aMatrix [
 		aMatrix at: 1 at: j put: j - 1 ].
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIRestrictedDamerauLevenshteinDistance >> fillStartingFromSecondRowAndColumn: aMatrix basedOn: firstString and: secondString [
 	
 	"Begin the loop from the second row/column"

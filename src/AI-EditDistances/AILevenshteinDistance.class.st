@@ -4,37 +4,40 @@ The Levenshtein distance is a string metric for measuring the difference between
 More info on: [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance)
 "
 Class {
-	#name : #AILevenshteinDistance,
-	#superclass : #AIAbstractEditDistance,
-	#category : #'AI-EditDistances-Distances'
+	#name : 'AILevenshteinDistance',
+	#superclass : 'AIAbstractEditDistance',
+	#instVars : [
+		'deletions',
+		'insertions',
+		'subtitutions',
+		'distanceMatrix'
+	],
+	#category : 'AI-EditDistances-Distances',
+	#package : 'AI-EditDistances',
+	#tag : 'Distances'
 }
 
-{ #category : #api }
+{ #category : 'api' }
 AILevenshteinDistance >> distanceBetween: aString and: anotherString [
 
-	| distanceMatrix cost |
+	| substitutionCost |
 	aString ifEmpty: [ ^ anotherString size ].
 	anotherString ifEmpty: [ ^ aString size ].
 
-	distanceMatrix := Array2D
-		rows: anotherString size + 1
-		columns: aString size + 1.
+	distanceMatrix := CTArray2D width: aString size + 1 height: anotherString size + 1.
 
-	1 to: distanceMatrix rowCount do: [ :i | 
-	distanceMatrix at: i at: 1 put: i - 1 ].
-	1 to: distanceMatrix columnCount do: [ :j | 
-	distanceMatrix at: 1 at: j put: j - 1 ].
+	1 to: distanceMatrix height do: [ :row | distanceMatrix atColumn: 1 atRow: row put: row - 1 ].
+	1 to: distanceMatrix width do: [ :col | distanceMatrix atColumn: col atRow: 1 put: col - 1 ].
 
-	2 to: distanceMatrix rowCount do: [ :i | 
-		2 to: distanceMatrix columnCount do: [ :j | 
-			cost := (aString at: j - 1) = (anotherString at: i - 1)
-				ifTrue: [ 0 ]
-				ifFalse: [ 1 ].
+	2 to: distanceMatrix height do: [ :row |
+		2 to: distanceMatrix width do: [ :col |
+			substitutionCost := (aString at: col - 1) = (anotherString at: row - 1)
+				                    ifTrue: [ 0 ]
+				                    ifFalse: [ 1 ].
+			distanceMatrix atColumn: col atRow: row put: {
+					((distanceMatrix atColumn: col atRow: row - 1) + 1 "deletion").
+					((distanceMatrix atColumn: col - 1 atRow: row) + 1 "insertion").
+					((distanceMatrix atColumn: col - 1 atRow: row - 1) + substitutionCost "substitution") } min ] ].
 
-			distanceMatrix at: i at: j put: { 
-				((distanceMatrix at: i at: j - 1) + 1).
-				((distanceMatrix at: i - 1 at: j) + 1).
-				((distanceMatrix at: i - 1 at: j - 1) + cost) } min ] ].
-
-	^ distanceMatrix at: distanceMatrix rowCount at: distanceMatrix columnCount
+	^ distanceMatrix atColumn: distanceMatrix width atRow: distanceMatrix height
 ]

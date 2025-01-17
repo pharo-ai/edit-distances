@@ -7,18 +7,20 @@ See also: Restricted Damerau-Levenshtein distance comment class.
 
 "
 Class {
-	#name : #AIDamerauLevenshteinDistance,
-	#superclass : #AIAbstractEditDistance,
+	#name : 'AIDamerauLevenshteinDistance',
+	#superclass : 'AIAbstractEditDistance',
 	#instVars : [
 		'distanceMatrix'
 	],
 	#classInstVars : [
 		'int'
 	],
-	#category : #'AI-EditDistances-Distances'
+	#category : 'AI-EditDistances-Distances',
+	#package : 'AI-EditDistances',
+	#tag : 'Distances'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 AIDamerauLevenshteinDistance >> calculateMinValue: cost at: i at: j using: lastMatchingRow and: lastMatchColumn [
 
 	"Here we calculate the value of all the possible operations we can do (addition, deletion, substitution and transposition).
@@ -61,7 +63,7 @@ AIDamerauLevenshteinDistance >> calculateMinValue: cost at: i at: j using: lastM
 	distanceMatrix at: i at: j put: minValue
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIDamerauLevenshteinDistance >> damerauLevenshteinAlgorithmFor: firstString and: secondString [
 
 	" Here we implement the Damerau-Levenshtein algorithm.
@@ -96,7 +98,7 @@ AIDamerauLevenshteinDistance >> damerauLevenshteinAlgorithmFor: firstString and:
 		rowCharactersWithIndexes at: firstStringCurrentCharacter put: i ]
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 AIDamerauLevenshteinDistance >> distanceBetween: firstString and: secondString [
 
 	firstString isEmpty ifTrue: [ ^ secondString size ].
@@ -109,17 +111,17 @@ AIDamerauLevenshteinDistance >> distanceBetween: firstString and: secondString [
 		at: distanceMatrix columnCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIDamerauLevenshteinDistance >> distanceMatrix [
 	^ distanceMatrix
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIDamerauLevenshteinDistance >> distanceMatrix: aCollection [ 
 	distanceMatrix := aCollection
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIDamerauLevenshteinDistance >> fillFirstTwoRowsAndColumnsWith: firstString and: secondString [
 
 	"It fills the first row and column with the maxDistance value and the second row and column with values starting with 0"
@@ -140,7 +142,7 @@ AIDamerauLevenshteinDistance >> fillFirstTwoRowsAndColumnsWith: firstString and:
 		distanceMatrix at: 2 at: j put: j - 2 ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIDamerauLevenshteinDistance >> initializeDistanceMatrixWith: firstString and: secondString [
 
 	distanceMatrix := Array2D

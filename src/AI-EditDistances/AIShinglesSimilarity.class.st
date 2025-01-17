@@ -6,28 +6,30 @@ A string similarity metric based on Shingles encoding [1]. It is well suited for
 Link of the paper: https://www.cs.princeton.edu/courses/archive/spr05/cos598E/bib/broder97resemblance.pdf
 "
 Class {
-	#name : #AIShinglesSimilarity,
-	#superclass : #AIAbstractEditDistance,
+	#name : 'AIShinglesSimilarity',
+	#superclass : 'AIAbstractEditDistance',
 	#instVars : [
 		'slidingWindowSize',
 		'maxEncodingSize'
 	],
-	#category : #'AI-EditDistances-Distances'
+	#category : 'AI-EditDistances-Distances',
+	#package : 'AI-EditDistances',
+	#tag : 'Distances'
 }
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 AIShinglesSimilarity class >> defaultMaxEncodingSize [
 
 	^ 4
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 AIShinglesSimilarity class >> defaultSlidingWindowSize [
 
 	^ 3
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIShinglesSimilarity class >> slidingWindowSize: aWindowSize maxEncodingSize: anEncodingSize [
 
 	^ self new
@@ -36,7 +38,7 @@ AIShinglesSimilarity class >> slidingWindowSize: aWindowSize maxEncodingSize: an
 		yourself.
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 AIShinglesSimilarity >> distanceBetween: firstSequence and: secondSequence [
 
 	| firstEncoding secondEncoding intersection |
@@ -49,7 +51,7 @@ AIShinglesSimilarity >> distanceBetween: firstSequence and: secondSequence [
 	^ ((intersection size / firstEncoding size) + (intersection size / secondEncoding size)) / 2.
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 AIShinglesSimilarity >> encode: aCollectionOfTokens [
 
 	| encodedSequence |
@@ -68,7 +70,7 @@ AIShinglesSimilarity >> encode: aCollectionOfTokens [
 	^ (encodedSequence asArray sorted first: maxEncodingSize) asSet.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 AIShinglesSimilarity >> initialize [
 
 	super initialize.
@@ -76,19 +78,19 @@ AIShinglesSimilarity >> initialize [
 	maxEncodingSize := self class defaultMaxEncodingSize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIShinglesSimilarity >> maxEncodingSize: anObject [
 
 	maxEncodingSize := anObject
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 AIShinglesSimilarity >> shingleFor: aCollectionOfTokens [
 	
 	^ aCollectionOfTokens asArray hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIShinglesSimilarity >> slidingWindowSize: anObject [
 
 	slidingWindowSize := anObject

@@ -21,15 +21,17 @@ Although the Brew edit distance and Wagner-Fischer algorithm are both used to co
 In summary, the Brew edit distance offers more flexibility in terms of operation costs and provides a description of the edit operations, while the Wagner-Fischer algorithm is a more straightforward approach to calculating the edit distance between two strings.
 "
 Class {
-	#name : #AIBrewDistance,
-	#superclass : #AIAbstractEditDistance,
+	#name : 'AIBrewDistance',
+	#superclass : 'AIAbstractEditDistance',
 	#instVars : [
 		'cost'
 	],
-	#category : #'AI-EditDistances-Distances'
+	#category : 'AI-EditDistances-Distances',
+	#package : 'AI-EditDistances',
+	#tag : 'Distances'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIBrewDistance >> cost [
 	"Answer an <Array> with the cost of edit operations as: 
 		1st element: Match
@@ -41,14 +43,14 @@ AIBrewDistance >> cost [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIBrewDistance >> cost: anArray [
 	"Set the receiver's cost of edit operations to anArray"
 
 	cost := anArray
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 AIBrewDistance >> distanceBetween: firstString and: secondString [
 	" Keep track of the edit steps and their costs in a 2D array. "
 
@@ -87,7 +89,7 @@ AIBrewDistance >> distanceBetween: firstString and: secondString [
 	^ (matrix at: n + 1) at: m + 1
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 AIBrewDistance >> initialize [
 	" Initialize the cost Array "
 

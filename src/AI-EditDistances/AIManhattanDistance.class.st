@@ -4,12 +4,14 @@ The Manhattan distance is defined as the first norm of the difference of two vec
 More info: [Manhattan distance](https://computervision.fandom.com/wiki/Manhattan_distance)
 "
 Class {
-	#name : #AIManhattanDistance,
-	#superclass : #AIAbstractEditDistance,
-	#category : #'AI-EditDistances-Distances'
+	#name : 'AIManhattanDistance',
+	#superclass : 'AIAbstractEditDistance',
+	#category : 'AI-EditDistances-Distances',
+	#package : 'AI-EditDistances',
+	#tag : 'Distances'
 }
 
-{ #category : #api }
+{ #category : 'api' }
 AIManhattanDistance >> distanceBetween: anArray and: anotherArray [
 
 	^ (anArray asPMVector - anotherArray asPMVector) firstNorm

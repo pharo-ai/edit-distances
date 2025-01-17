@@ -19,15 +19,17 @@ metric distanceBetween: #( 0 2 3 4 ) and: #( 2 4 3 7 )
 ```
 "
 Class {
-	#name : #AIMinkowskiDistance,
-	#superclass : #AIAbstractEditDistance,
+	#name : 'AIMinkowskiDistance',
+	#superclass : 'AIAbstractEditDistance',
 	#instVars : [
 		'p'
 	],
-	#category : #'AI-EditDistances-Distances'
+	#category : 'AI-EditDistances-Distances',
+	#package : 'AI-EditDistances',
+	#tag : 'Distances'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMinkowskiDistance class >> p: anInteger [
 
 	^ self new
@@ -35,7 +37,7 @@ AIMinkowskiDistance class >> p: anInteger [
 		yourself
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 AIMinkowskiDistance >> distanceBetween: firstPoint and: secondPoint [
 
 	| vector |
@@ -44,7 +46,7 @@ AIMinkowskiDistance >> distanceBetween: firstPoint and: secondPoint [
 	^ vector sum raisedTo: 1 / p
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMinkowskiDistance >> p: anInteger [
 
 	p := anInteger

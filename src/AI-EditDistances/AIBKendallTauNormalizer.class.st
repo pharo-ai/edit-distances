@@ -10,12 +10,14 @@ Reference: Maurice G. Kendall, “The treatment of ties in ranking problems”, 
 More info: [Kendall tau algorithm](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kendalltau.html)
 "
 Class {
-	#name : #AIBKendallTauNormalizer,
-	#superclass : #AIAbstractKendallTauNormalizer,
-	#category : #'AI-EditDistances-Normalizers'
+	#name : 'AIBKendallTauNormalizer',
+	#superclass : 'AIAbstractKendallTauNormalizer',
+	#category : 'AI-EditDistances-Normalizers',
+	#package : 'AI-EditDistances',
+	#tag : 'Normalizers'
 }
 
-{ #category : #converting }
+{ #category : 'converting' }
 AIBKendallTauNormalizer >> normalize [
 
 	"kendallTauDistance is a natural number that will be normalized into the range of [-1, 1]

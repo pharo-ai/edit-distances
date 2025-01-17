@@ -4,8 +4,8 @@ The Kendall tau rank distance is a metric that counts the number of pairwise dis
 More info: [Kendall Tau distance](https://en.wikipedia.org/wiki/Kendall_tau_distance)
 "
 Class {
-	#name : #AIKendallTauDistance,
-	#superclass : #AIAbstractEditDistance,
+	#name : 'AIKendallTauDistance',
+	#superclass : 'AIAbstractEditDistance',
 	#instVars : [
 		'normalizer',
 		'tiesInX',
@@ -16,16 +16,18 @@ Class {
 		'concordantPairs',
 		'willWeNormalizeTheResult'
 	],
-	#category : #'AI-EditDistances-Distances'
+	#category : 'AI-EditDistances-Distances',
+	#package : 'AI-EditDistances',
+	#tag : 'Distances'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIKendallTauDistance class >> defaultNormalizer [
 
 	^ AIBKendallTauNormalizer
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 AIKendallTauDistance >> distanceBetween: xRankedList and: yRankedList [
 
 	| indexCombinations |
@@ -58,7 +60,7 @@ AIKendallTauDistance >> distanceBetween: xRankedList and: yRankedList [
 	^ self normalizedDistanceBetween: xRankedList and: yRankedList
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 AIKendallTauDistance >> initialize [
 
 	super initialize.
@@ -66,13 +68,13 @@ AIKendallTauDistance >> initialize [
 	self putValuesInZero
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIKendallTauDistance >> normalizeResult: aBoolean [
 
 	willWeNormalizeTheResult := aBoolean
 ]
 
-{ #category : #calculating }
+{ #category : 'calculating' }
 AIKendallTauDistance >> normalizedDistanceBetween: xRankedList and: yRankedList [
 
 	"The distance is the number of discordant pairs"
@@ -93,7 +95,7 @@ AIKendallTauDistance >> normalizedDistanceBetween: xRankedList and: yRankedList 
 	^ normalizer normalize
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 AIKendallTauDistance >> putValuesInZero [
 
 	totalPairs := 0.
@@ -103,7 +105,7 @@ AIKendallTauDistance >> putValuesInZero [
 	tiesInY := 0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIKendallTauDistance >> useNormalizer: aKendallTauNormalizerClass [
 
 	normalizerClass := aKendallTauNormalizerClass

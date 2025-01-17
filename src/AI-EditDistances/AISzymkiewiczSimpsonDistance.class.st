@@ -4,12 +4,14 @@ The overlap coefficient, or Szymkiewicz–Simpson coefficient, is a similarity m
 More info: [Overlap coefficient](https://en.wikipedia.org/wiki/Overlap_coefficient)
 "
 Class {
-	#name : #AISzymkiewiczSimpsonDistance,
-	#superclass : #AIAbstractEditDistance,
-	#category : #'AI-EditDistances-Distances'
+	#name : 'AISzymkiewiczSimpsonDistance',
+	#superclass : 'AIAbstractEditDistance',
+	#category : 'AI-EditDistances-Distances',
+	#package : 'AI-EditDistances',
+	#tag : 'Distances'
 }
 
-{ #category : #api }
+{ #category : 'api' }
 AISzymkiewiczSimpsonDistance >> distanceBetween: aSet and: anotherSet [
 
 	| intersection minSize |

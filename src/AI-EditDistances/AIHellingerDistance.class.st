@@ -37,12 +37,14 @@ AIHellingerDistance new distanceBetween: p and: q.
 ```
 "
 Class {
-	#name : #AIHellingerDistance,
-	#superclass : #AIAbstractEditDistance,
-	#category : #'AI-EditDistances-Distances'
+	#name : 'AIHellingerDistance',
+	#superclass : 'AIAbstractEditDistance',
+	#category : 'AI-EditDistances-Distances',
+	#package : 'AI-EditDistances',
+	#tag : 'Distances'
 }
 
-{ #category : #api }
+{ #category : 'api' }
 AIHellingerDistance >> distanceBetween: firstCollection and: secondCollection [
 
 	^ (firstCollection asPMVector sqrt - secondCollection asPMVector sqrt)

@@ -1,6 +1,6 @@
-Extension { #name : #SequenceableCollection }
+Extension { #name : 'SequenceableCollection' }
 
-{ #category : #'*AI-EditDistances' }
+{ #category : '*AI-EditDistances' }
 SequenceableCollection >> combinations: aNumber [
 
 	"Take the items in the receiver, aNumber at a time, return all the combinations"

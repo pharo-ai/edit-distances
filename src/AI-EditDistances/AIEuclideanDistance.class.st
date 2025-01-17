@@ -4,12 +4,14 @@ The Euclidean distance between two points in Euclidean space is the length of a 
 More info on: [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) 
 "
 Class {
-	#name : #AIEuclideanDistance,
-	#superclass : #AIAbstractEditDistance,
-	#category : #'AI-EditDistances-Distances'
+	#name : 'AIEuclideanDistance',
+	#superclass : 'AIAbstractEditDistance',
+	#category : 'AI-EditDistances-Distances',
+	#package : 'AI-EditDistances',
+	#tag : 'Distances'
 }
 
-{ #category : #api }
+{ #category : 'api' }
 AIEuclideanDistance >> distanceBetween: firstPoint and: secondPoint [
 	"It follows the Euclidean distance between two points formula"
 
