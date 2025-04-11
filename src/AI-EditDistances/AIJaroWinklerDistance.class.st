@@ -37,8 +37,7 @@ Class {
 	#superclass : 'AIAbstractEditDistance',
 	#instVars : [
 		'prefixScale',
-		'maxPrefixLength',
-		'boostThreshold'
+		'maxPrefixLength'
 	],
 	#category : 'AI-EditDistances-Distances',
 	#package : 'AI-EditDistances',
