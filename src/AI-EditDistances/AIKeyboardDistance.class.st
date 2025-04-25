@@ -1,3 +1,23 @@
+"
+Keyboard Distance Algorithm
+
+The Keyboard Distance is a string metric that calculates the physical distance between characters on a standard QWERTY keyboard. It uses Euclidean distance between key positions and adds a penalty for length differences.
+
+This metric is particularly useful for:
+1. Detecting likely typos based on keyboard proximity
+2. Suggesting spelling corrections
+3. Analyzing typing patterns and common errors
+
+The algorithm models the staggered rows of a physical keyboard with appropriate offsets.
+
+Examples:
+keyboardDistance := AIKeyboardDistance new.
+keyboardDistance distanceBetween: 'cat' and: 'cat'.  """"Returns: 0.0 (identical strings)""""
+keyboardDistance distanceBetween: 'cat' and: 'vat'.  """"Returns: 1.0 (c and v are adjacent)""""
+keyboardDistance distanceBetween: 'hello' and: 'kello'.  """"Returns: 2.0 (h and k are two keys apart)""""
+keyboardDistance distanceBetween: 'hello' and: 'hell'.  """"Returns: 1.0 (length difference penalty)""""
+
+"
 Class {
 	#name : 'AIKeyboardDistance',
 	#superclass : 'AIAbstractEditDistance',
