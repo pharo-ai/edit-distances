@@ -1,13 +1,14 @@
 Class {
-	#name : #AIHellingerDistanceTest,
-	#superclass : #TestCase,
+	#name : 'AIHellingerDistanceTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'metric'
 	],
-	#category : #'AI-EditDistances-Tests'
+	#category : 'AI-EditDistances-Tests',
+	#package : 'AI-EditDistances-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIHellingerDistanceTest >> assert: aNumber closeTo: anotherNumber epsilon: epsilonValue [
 
     | difference |
@@ -19,14 +20,14 @@ AIHellingerDistanceTest >> assert: aNumber closeTo: anotherNumber epsilon: epsil
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 AIHellingerDistanceTest >> setUp [
 
 	super setUp.
 	metric := AIHellingerDistance new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIHellingerDistanceTest >> testDifferentDistribution1 [
 
 	| p q |
@@ -38,7 +39,7 @@ AIHellingerDistanceTest >> testDifferentDistribution1 [
 		epsilon: 0.001
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIHellingerDistanceTest >> testDifferentDistribution2 [
 
 	| p q |
@@ -50,7 +51,7 @@ AIHellingerDistanceTest >> testDifferentDistribution2 [
 		epsilon: 0.001
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIHellingerDistanceTest >> testDifferentDistribution3 [
 
 	| p q |
@@ -62,7 +63,7 @@ AIHellingerDistanceTest >> testDifferentDistribution3 [
 		epsilon: 0.0001
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIHellingerDistanceTest >> testDifferentDistribution4 [
 
 	| p q |
@@ -74,7 +75,7 @@ AIHellingerDistanceTest >> testDifferentDistribution4 [
 		epsilon: 0.0001
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIHellingerDistanceTest >> testEqualDistributions [
 
     | p q |
@@ -85,7 +86,7 @@ AIHellingerDistanceTest >> testEqualDistributions [
     self assert: (metric distanceBetween: p and: q) equals: 0.0.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIHellingerDistanceTest >> testInvalidDistributions [
 
     | p q |

@@ -1,22 +1,23 @@
 Class {
-	#name : #AIHammingDistanceTest,
-	#superclass : #TestCase,
+	#name : 'AIHammingDistanceTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'levenshteinRestricted',
 		'damerauLevenshtein',
 		'metric'
 	],
-	#category : #'AI-EditDistances-Tests'
+	#category : 'AI-EditDistances-Tests',
+	#package : 'AI-EditDistances-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 AIHammingDistanceTest >> setUp [
 
 	super setUp.
 	metric := AIHammingDistance new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIHammingDistanceTest >> testDistanceBinaryNumericVector [
 
 	self
@@ -24,7 +25,7 @@ AIHammingDistanceTest >> testDistanceBinaryNumericVector [
 		equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIHammingDistanceTest >> testDistanceOnStrings [
 
 	self

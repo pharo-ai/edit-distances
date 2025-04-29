@@ -1,12 +1,12 @@
-Extension { #name : #AIEuclideanDistanceTest }
+Extension { #name : 'AIEuclideanDistanceTest' }
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIEuclideanDistanceTest >> testEuclideanDistanceFourDimensions [
 
 	self assert: (metric distanceBetween: #(0 3 4 5) and: #(7 6 3 -1)) closeTo: 9.74679434481
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIEuclideanDistanceTest >> testEuclideanDistanceThreeDimensions [
 
 	self
@@ -14,7 +14,7 @@ AIEuclideanDistanceTest >> testEuclideanDistanceThreeDimensions [
 		closeTo: 9.3397
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIEuclideanDistanceTest >> testEuclideanDistanceTwoDimensions [
 
 	self

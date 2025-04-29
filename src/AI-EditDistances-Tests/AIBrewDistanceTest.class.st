@@ -1,20 +1,21 @@
 Class {
-	#name : #AIBrewDistanceTest,
-	#superclass : #TestCase,
+	#name : 'AIBrewDistanceTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'metric'
 	],
-	#category : #'AI-EditDistances-Tests'
+	#category : 'AI-EditDistances-Tests',
+	#package : 'AI-EditDistances-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 AIBrewDistanceTest >> setUp [
 
 	super setUp.
 	metric := AIBrewDistance new
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIBrewDistanceTest >> testBrewDistanceDifferentStrings [
 
 	self 
@@ -22,7 +23,7 @@ AIBrewDistanceTest >> testBrewDistanceDifferentStrings [
 		equals: 3.
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIBrewDistanceTest >> testBrewDistanceEmptyStrings [
 
 	self 
@@ -31,7 +32,7 @@ AIBrewDistanceTest >> testBrewDistanceEmptyStrings [
 	
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIBrewDistanceTest >> testBrewDistanceSameStrings [
 
 	self 
@@ -40,7 +41,7 @@ AIBrewDistanceTest >> testBrewDistanceSameStrings [
 	
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIBrewDistanceTest >> testBrewDistanceUnicodeStrings [
 
 	self 

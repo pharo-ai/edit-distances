@@ -1,6 +1,6 @@
-Extension { #name : #AIKendallTauDistanceTest }
+Extension { #name : 'AIKendallTauDistanceTest' }
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIKendallTauDistanceTest >> testDistanceToUsingAIKendallTauDistanceCNormalizer [
 
 	| kendallTauDistance |
@@ -16,7 +16,7 @@ AIKendallTauDistanceTest >> testDistanceToUsingAIKendallTauDistanceCNormalizer [
 	self assert: (kendallTauDistance distanceBetween: #( 90 24 67 49 72 ) and: #( 66 51 96 40 2 )) closeTo: 0.
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIKendallTauDistanceTest >> testDistanceToUsingAIKendallTauDistanceDefaultNormalizer [
 
 	| kendallTauDistance |
@@ -31,7 +31,7 @@ AIKendallTauDistanceTest >> testDistanceToUsingAIKendallTauDistanceDefaultNormal
 	self assert: (kendallTauDistance distanceBetween: #( 90 24 67 49 72 ) and: #( 66 51 96 40 2 )) closeTo: 0.
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIKendallTauDistanceTest >> testDistanceToUsingAIKendallTauDistanceNoNormalizer [
 
 	| kendallTauDistance |

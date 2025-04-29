@@ -1,27 +1,28 @@
 Class {
-	#name : #AIDamerauLevenshteinDistanceTest,
-	#superclass : #TestCase,
+	#name : 'AIDamerauLevenshteinDistanceTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'levenshteinRestricted',
 		'damerauLevenshtein'
 	],
-	#category : #'AI-EditDistances-Tests'
+	#category : 'AI-EditDistances-Tests',
+	#package : 'AI-EditDistances-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 AIDamerauLevenshteinDistanceTest >> setUp [
 
 	super setUp.
 	damerauLevenshtein := AIDamerauLevenshteinDistance new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceCaseSensitive [
 
 	self assert: (damerauLevenshtein distanceBetween: 'HONDA' and: 'honda') equals: 5.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceEmptyStrings [
 
 	self assert: (damerauLevenshtein distanceBetween: '' and: '') equals: 0.
@@ -29,67 +30,67 @@ AIDamerauLevenshteinDistanceTest >> testDamerauDistanceEmptyStrings [
 
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceOneAddOneSwap [
 
 	self assert: (damerauLevenshtein distanceBetween: 'a cat' and: 'a abct') equals: 2.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceOneReplace [
 
 	self assert: (damerauLevenshtein distanceBetween: 'A' and: 'Z') equals: 1.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceOneSwap [
 
 	self assert: (damerauLevenshtein distanceBetween: 'AZ' and: 'ZA') equals: 1.
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceOneSwapOneDeletion [
 
 	self assert: (damerauLevenshtein distanceBetween: 'abbbc' and: 'cbba') equals: 2.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceRemoveAll [
 	
 	self assert: (damerauLevenshtein distanceBetween: 'HONDA' and: '') equals: 5.
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceThreeSwapsOneDeletion [
 
 	self assert: (damerauLevenshtein distanceBetween: 'abcccabcccde' and: 'cccbabaedcc') equals: 7.
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceTwoReplacesOneAddOneSwap [
 
 	self assert: (damerauLevenshtein distanceBetween: 'HONDA' and: 'HYUNADI') equals: 4.
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceTwoSwapsOneDeletion [
 
 	self assert: (damerauLevenshtein distanceBetween: 'abcba' and: 'baab') equals: 3.
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceTwoSwapsThreeReplaces [
 
 	self assert: (damerauLevenshtein distanceBetween: 'agaaloli' and: 'gananail') equals: 5.
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceTwoSwapsTwoReplaces [
 
 	self assert: (damerauLevenshtein distanceBetween: 'hannah' and: 'nahhan') equals: 4.
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIDamerauLevenshteinDistanceTest >> testDistanceToUsingAIDamerauLevenshteinDistance [
 
 
@@ -97,7 +98,7 @@ AIDamerauLevenshteinDistanceTest >> testDistanceToUsingAIDamerauLevenshteinDista
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIDamerauLevenshteinDistanceTest >> testFillFirstTwoRowsAndColumns [
 
 	| max result |
