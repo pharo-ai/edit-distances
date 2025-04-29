@@ -1,6 +1,6 @@
-Extension { #name : #AIBrewDistanceTest }
+Extension { #name : 'AIBrewDistanceTest' }
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIBrewDistanceTest >> testBrewDistanceDifferentStrings [
 
 	self 
@@ -8,7 +8,7 @@ AIBrewDistanceTest >> testBrewDistanceDifferentStrings [
 		equals: 3.
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIBrewDistanceTest >> testBrewDistanceEmptyStrings [
 
 	self 
@@ -17,7 +17,7 @@ AIBrewDistanceTest >> testBrewDistanceEmptyStrings [
 	
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIBrewDistanceTest >> testBrewDistanceSameStrings [
 
 	self 
@@ -26,7 +26,7 @@ AIBrewDistanceTest >> testBrewDistanceSameStrings [
 	
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIBrewDistanceTest >> testBrewDistanceUnicodeStrings [
 
 	self 

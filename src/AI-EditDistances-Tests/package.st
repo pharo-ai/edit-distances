@@ -1,1 +1,1 @@
-Package { #name : #'AI-EditDistances-Tests' }
+Package { #name : 'AI-EditDistances-Tests' }

@@ -1,13 +1,14 @@
 Class {
-	#name : #AIShinglesSimilarityTest,
-	#superclass : #TestCase,
+	#name : 'AIShinglesSimilarityTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'metric'
 	],
-	#category : #'AI-EditDistances-Tests'
+	#category : 'AI-EditDistances-Tests',
+	#package : 'AI-EditDistances-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 AIShinglesSimilarityTest >> setUp [ 
 	super setUp.
 	
@@ -16,7 +17,7 @@ AIShinglesSimilarityTest >> setUp [
 		maxEncodingSize: 5.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIShinglesSimilarityTest >> testEncode [
 
 	| sequence encodedSequence expected |
@@ -35,7 +36,7 @@ AIShinglesSimilarityTest >> testEncode [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIShinglesSimilarityTest >> testEncodeLongSequence [
 
 	| sequence encodedSequence expected |
@@ -48,7 +49,7 @@ AIShinglesSimilarityTest >> testEncodeLongSequence [
 	self assert: encodedSequence equals: expected.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIShinglesSimilarityTest >> testNoSimilarity [
 
 	| sequence1 sequence2 similarity |
@@ -60,7 +61,7 @@ AIShinglesSimilarityTest >> testNoSimilarity [
 	self assert: similarity equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIShinglesSimilarityTest >> testShingleFor [
 
 	| tokens shingle expected |
@@ -72,7 +73,7 @@ AIShinglesSimilarityTest >> testShingleFor [
 	self assert: shingle equals: expected
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIShinglesSimilarityTest >> testSimilarityBetweenAnd [
 
 	| sequence1 sequence2 similarity |
@@ -84,7 +85,7 @@ AIShinglesSimilarityTest >> testSimilarityBetweenAnd [
 	self assert: similarity closeTo: 1 / 4 + (1 / 3) / 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIShinglesSimilarityTest >> testSimilarityLongSequenceSmallChange [
 
 	| sequence1 sequence2 similarity |
@@ -97,7 +98,7 @@ AIShinglesSimilarityTest >> testSimilarityLongSequenceSmallChange [
 	self assert: similarity closeTo: 4/5.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIShinglesSimilarityTest >> testSimilaritySameSequence [
 
 	| sequence similarity |

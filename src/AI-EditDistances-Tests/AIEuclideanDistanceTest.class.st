@@ -1,26 +1,27 @@
 Class {
-	#name : #AIEuclideanDistanceTest,
-	#superclass : #TestCase,
+	#name : 'AIEuclideanDistanceTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'metric'
 	],
-	#category : #'AI-EditDistances-Tests'
+	#category : 'AI-EditDistances-Tests',
+	#package : 'AI-EditDistances-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 AIEuclideanDistanceTest >> setUp [
 
 	super setUp.
 	metric := AIEuclideanDistance new
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIEuclideanDistanceTest >> testEuclideanDistanceFourDimensions [
 
 	self assert: (metric distanceBetween: #(0 3 4 5) and: #(7 6 3 -1)) closeTo: 9.74679434481
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIEuclideanDistanceTest >> testEuclideanDistanceThreeDimensions [
 
 	self
@@ -28,7 +29,7 @@ AIEuclideanDistanceTest >> testEuclideanDistanceThreeDimensions [
 		closeTo: 9.3397
 ]
 
-{ #category : #'*AI-EditDistances-Tests' }
+{ #category : '*AI-EditDistances-Tests' }
 AIEuclideanDistanceTest >> testEuclideanDistanceTwoDimensions [
 
 	self
