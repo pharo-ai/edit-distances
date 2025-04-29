@@ -26,11 +26,6 @@ jaroWinklerDistance distanceBetween: 'MARTHA' and: 'MARHTA'.  \""Returns: 0.961\
 jaroWinklerDistance distanceBetween: 'DWAYNE' and: 'DUANE'.   \""Returns: 0.840\""
 jaroWinklerDistance distanceBetween: 'CRATE' and: 'TRACE'.    \""Returns: 0.733\""
 jaroWinklerDistance distanceBetween: 'ABCD' and: 'EFGH'.      \""Returns: 0.0\""
-
-Reference: 
-Winkler, W. E. (1999). \""The state of record linkage and current research problems\"". 
-Statistics of Income Division, Internal Revenue Service Publication.
-
 "
 Class {
 	#name : 'AIJaroWinklerDistance',
@@ -46,25 +41,22 @@ Class {
 
 { #category : 'api' }
 AIJaroWinklerDistance >> commonPrefixLengthOf: firstString and: secondString [
-	"Calculate the length of the common prefix between the two strings, up to maxPrefixLength.
-     Following the original algorithm, we only continue checking while characters match."
-    
-    | minLength count |
-    minLength := maxPrefixLength min: (firstString size min: secondString size).
-    
-    count := 0.
-    1 to: minLength do: [:i |
-        ((firstString at: i) = (secondString at: i)) ifTrue: [
-            | char |
-            char := firstString at: i.
-            char isDigit 
-                ifFalse: [count := count + 1]
-        ] ifFalse: [
-            ^ count
-        ]
-    ].
-    
-    ^ count
+	"Calculate the length of the common prefix between the two strings, up to maxPrefixLength."
+
+	| minLength count |
+	minLength := maxPrefixLength min:
+		             (firstString size min: secondString size).
+
+	count := 0.
+	1 to: minLength do: [ :i |
+		(firstString at: i) = (secondString at: i)
+			ifTrue: [
+				| char |
+				char := firstString at: i.
+				char isDigit ifFalse: [ count := count + 1 ] ]
+			ifFalse: [ ^ count ] ].
+
+	^ count
 ]
 
 { #category : 'api' }
@@ -207,13 +199,4 @@ AIJaroWinklerDistance >> prefixScale: aNumber [
         ifTrue: [ Error signal: 'Prefix scaling factor must be between 0 and 0.25' ].
     
     prefixScale := aNumber
-]
-
-{ #category : 'api' }
-AIJaroWinklerDistance >> similarityBetween: firstString and: secondString [
-	
-	"Return the similarity between two strings using the Jaro-Winkler measure.
-    For Jaro-Winkler, similarity is the same as distance (value between 0 and 1)."
-    
-    ^ self distanceBetween: firstString and: secondString
 ]
