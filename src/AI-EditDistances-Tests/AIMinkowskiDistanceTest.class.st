@@ -1,22 +1,23 @@
 Class {
-	#name : #AIMinkowskiDistanceTest,
-	#superclass : #TestCase,
+	#name : 'AIMinkowskiDistanceTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'levenshteinRestricted',
 		'damerauLevenshtein',
 		'metric'
 	],
-	#category : #'AI-EditDistances-Tests'
+	#category : 'AI-EditDistances-Tests',
+	#package : 'AI-EditDistances-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 AIMinkowskiDistanceTest >> setUp [
 
 	super setUp.
 	metric := AIMinkowskiDistance p: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIMinkowskiDistanceTest >> testDistance2WithP3 [
 
 	metric p: 3.
@@ -25,7 +26,7 @@ AIMinkowskiDistanceTest >> testDistance2WithP3 [
 		closeTo: 3.5033
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIMinkowskiDistanceTest >> testDistanceWithP2 [
 
 	metric p: 2.
@@ -34,7 +35,7 @@ AIMinkowskiDistanceTest >> testDistanceWithP2 [
 		closeTo: 4.0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIMinkowskiDistanceTest >> testDistanceWithP3 [
 
 	metric p: 3.

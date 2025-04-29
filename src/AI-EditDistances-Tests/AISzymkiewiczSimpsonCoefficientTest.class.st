@@ -1,10 +1,11 @@
 Class {
-	#name : #AISzymkiewiczSimpsonCoefficientTest,
-	#superclass : #TestCase,
-	#category : #'AI-EditDistances-Tests'
+	#name : 'AISzymkiewiczSimpsonCoefficientTest',
+	#superclass : 'TestCase',
+	#category : 'AI-EditDistances-Tests',
+	#package : 'AI-EditDistances-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 AISzymkiewiczSimpsonCoefficientTest >> testSzymkiewiczSimpsonDistanceTo [
 
 	| metric |
