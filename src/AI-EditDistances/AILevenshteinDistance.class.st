@@ -6,38 +6,84 @@ More info on: [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_d
 Class {
 	#name : 'AILevenshteinDistance',
 	#superclass : 'AIAbstractEditDistance',
-	#instVars : [
-		'deletions',
-		'insertions',
-		'subtitutions',
-		'distanceMatrix'
-	],
 	#category : 'AI-EditDistances-Distances',
 	#package : 'AI-EditDistances',
 	#tag : 'Distances'
 }
 
 { #category : 'api' }
-AILevenshteinDistance >> distanceBetween: aString and: anotherString [
+AILevenshteinDistance >> distanceBetween: firstString and: secondString [
 
-	| substitutionCost |
-	aString ifEmpty: [ ^ anotherString size ].
-	anotherString ifEmpty: [ ^ aString size ].
+	| distanceMatrix |
+	
+	"If one of the strings is empty, return the other string's size"
+	firstString isEmpty ifTrue: [ ^ secondString size ].
+	secondString isEmpty ifTrue: [ ^ firstString size ].
+	
+	distanceMatrix := self distanceMatrixBasedOn: firstString and: secondString.
 
-	distanceMatrix := CTArray2D width: aString size + 1 height: anotherString size + 1.
+	^ distanceMatrix
+		at: distanceMatrix numberOfRows
+		at: distanceMatrix numberOfColumns
+]
 
-	1 to: distanceMatrix height do: [ :row | distanceMatrix atColumn: 1 atRow: row put: row - 1 ].
-	1 to: distanceMatrix width do: [ :col | distanceMatrix atColumn: col atRow: 1 put: col - 1 ].
+{ #category : 'private' }
+AILevenshteinDistance >> distanceMatrixBasedOn: firstString and: secondString [
 
-	2 to: distanceMatrix height do: [ :row |
-		2 to: distanceMatrix width do: [ :col |
-			substitutionCost := (aString at: col - 1) = (anotherString at: row - 1)
-				                    ifTrue: [ 0 ]
-				                    ifFalse: [ 1 ].
-			distanceMatrix atColumn: col atRow: row put: {
-					((distanceMatrix atColumn: col atRow: row - 1) + 1 "deletion").
-					((distanceMatrix atColumn: col - 1 atRow: row) + 1 "insertion").
-					((distanceMatrix atColumn: col - 1 atRow: row - 1) + substitutionCost "substitution") } min ] ].
+	| distanceMatrix |
+	"Changed from CTArray2D to Array2D to fix undeclared variable error"
+	distanceMatrix := Array2D
+		rows: secondString size + 1
+		columns: firstString size + 1.
 
-	^ distanceMatrix atColumn: distanceMatrix width atRow: distanceMatrix height
+	self fillFirstRowAndColumn: distanceMatrix.
+	
+	self fillStartingFromSecondRowAndColumn: distanceMatrix
+		basedOn: firstString
+		and: secondString.
+		
+	^ distanceMatrix
+]
+
+{ #category : 'private' }
+AILevenshteinDistance >> fillCellInMatrix: aMatrix at: i at: j basedOn: firstString and: secondString [
+
+	| cost leftCell upperCell upperLeftCell |
+	
+	"Setting the cost"
+	cost := (firstString at: j - 1) = (secondString at: i - 1)
+		ifTrue: [ 0 ]
+		ifFalse: [ 1 ].
+		
+	leftCell := (aMatrix at: i at: j - 1) + 1.
+	upperCell := (aMatrix at: i - 1 at: j) + 1.
+	upperLeftCell := (aMatrix at: i - 1 at: j - 1) + cost.
+	
+	"Calculate the min between the left, upper-left, and upper case of our current case"
+	aMatrix at: i at: j put:
+		{ leftCell . upperCell . upperLeftCell } min.
+]
+
+{ #category : 'private' }
+AILevenshteinDistance >> fillFirstRowAndColumn: aMatrix [
+	
+	"Fill the first row and column starting with 0"
+	1 to: aMatrix rowCount do: [ :i | 
+		aMatrix at: i at: 1 put: i - 1 ].
+	
+	1 to: aMatrix columnCount do: [ :j | 
+		aMatrix at: 1 at: j put: j - 1 ].
+]
+
+{ #category : 'private' }
+AILevenshteinDistance >> fillStartingFromSecondRowAndColumn: aMatrix basedOn: firstString and: secondString [
+	
+	"Begin the loop from the second row/column"
+	2 to: aMatrix numberOfRows do: [ :i | 
+		2 to: aMatrix numberOfColumns do: [ :j | 
+			self fillCellInMatrix: aMatrix
+				at: i
+				at: j
+				basedOn: firstString
+				and: secondString ] ].
 ]
