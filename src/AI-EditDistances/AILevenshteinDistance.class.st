@@ -32,7 +32,8 @@ AILevenshteinDistance >> distanceMatrixBasedOn: firstString and: secondString [
 
     | distanceMatrix |
     distanceMatrix := CTArray2D
-        extent: (firstString size + 1) @ (secondString size + 1).
+        rows: secondString size + 1
+		columns: firstString size + 1.
 
     self fillFirstRowAndColumn: distanceMatrix.
 
