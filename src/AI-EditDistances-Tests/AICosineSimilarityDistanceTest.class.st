@@ -18,5 +18,5 @@ AICosineSimilarityDistanceTest >> setUp [
 { #category : '*AI-EditDistances-Tests' }
 AICosineSimilarityDistanceTest >> testCosineSimilarityDistanceTo [
 
-	self assert: (cosineDistance distanceBetween: #(3 45 7 2) and: #(2 54 13 15)) closeTo: 0.9722
+	self assert: (cosineDistance distanceBetween: #(3 45 7 2) and: #(2 54 13 15)) closeTo: 0.9722842517123499
 ]

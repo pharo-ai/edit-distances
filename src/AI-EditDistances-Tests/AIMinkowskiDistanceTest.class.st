@@ -23,7 +23,7 @@ AIMinkowskiDistanceTest >> testDistance2WithP3 [
 	metric p: 3.
 	self
 		assert: (metric distanceBetween: #( 0 2 3 4 ) and: #( 2 4 3 7 ))
-		closeTo: 3.5033
+		closeTo: 3.503398060386724
 ]
 
 { #category : 'tests' }
@@ -41,5 +41,5 @@ AIMinkowskiDistanceTest >> testDistanceWithP3 [
 	metric p: 3.
 	self
 		assert: (metric distanceBetween: #( 1 2 3 4 5 6 ) and: #( 7 8 9 10 11 12 ))
-		closeTo: 10.9027235
+		closeTo: 10.902723556992836
 ]

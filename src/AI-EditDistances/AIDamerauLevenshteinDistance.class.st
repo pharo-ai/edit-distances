@@ -145,9 +145,8 @@ AIDamerauLevenshteinDistance >> fillFirstTwoRowsAndColumnsWith: firstString and:
 { #category : 'private' }
 AIDamerauLevenshteinDistance >> initializeDistanceMatrixWith: firstString and: secondString [
 
-	distanceMatrix := Array2D
-		rows: firstString size + 2
-		columns: secondString size + 2.
-		
-	self fillFirstTwoRowsAndColumnsWith: firstString and: secondString
+    distanceMatrix := CTArray2D
+        extent: (secondString size + 2) @ (firstString size + 2).
+
+    self fillFirstTwoRowsAndColumnsWith: firstString and: secondString
 ]

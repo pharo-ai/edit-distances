@@ -44,18 +44,17 @@ AIRestrictedDamerauLevenshteinDistance >> distanceBetween: firstString and: seco
 { #category : 'private' }
 AIRestrictedDamerauLevenshteinDistance >> distanceMatrixBasedOn: firstString and: secondString [
 
-	| distanceMatrix |
-	distanceMatrix := Array2D
-		rows: secondString size + 1
-		columns: firstString size + 1.
+    | distanceMatrix |
+    distanceMatrix := CTArray2D
+        extent: (firstString size + 1) @ (secondString size + 1).
 
-	self fillFirstRowAndColumn: distanceMatrix.
-	
-	self fillStartingFromSecondRowAndColumn: distanceMatrix
-		basedOn: firstString
-		and: secondString.
-		
-	^ distanceMatrix
+    self fillFirstRowAndColumn: distanceMatrix.
+
+    self fillStartingFromSecondRowAndColumn: distanceMatrix
+        basedOn: firstString
+        and: secondString.
+
+    ^ distanceMatrix
 ]
 
 { #category : 'private' }
@@ -78,14 +77,12 @@ AIRestrictedDamerauLevenshteinDistance >> fillCellInMatrix: aMatrix at: i at: j 
 ]
 
 { #category : 'private' }
-AIRestrictedDamerauLevenshteinDistance >> fillFirstRowAndColumn: aMatrix [
-	
-	"Fill the first row and column starting with 1"
-	1 to: aMatrix rowCount do: [ :i | 
-		aMatrix at: i at: 1 put: i - 1 ].
-	
-	2 to: aMatrix columnCount do: [ :j | 
-		aMatrix at: 1 at: j put: j - 1 ].
+AIRestrictedDamerauLevenshteinDistance >> fillFirstRowAndColumn: distanceMatrix[
+    "Initialize the first row and column of the distance matrix with incremental values."
+    1 to: distanceMatrix height do: [ :i |
+        distanceMatrix atColumn: 1 atRow: i put: i - 1 ].
+    1 to: distanceMatrix width do: [ :j |
+        distanceMatrix atColumn: j atRow: 1 put: j - 1 ].
 ]
 
 { #category : 'private' }

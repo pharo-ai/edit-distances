@@ -100,12 +100,10 @@ AIDamerauLevenshteinDistanceTest >> testDistanceToUsingAIDamerauLevenshteinDista
 
 { #category : 'tests' }
 AIDamerauLevenshteinDistanceTest >> testFillFirstTwoRowsAndColumns [
-
 	| max result |
-	damerauLevenshtein distanceMatrix: (Array2D rows: 5 columns: 5).
+	damerauLevenshtein distanceMatrix: (CTArray2D rows: 5 columns: 5).
 	max := 10.
-	result := Array2D new.
-	result rows: 5 columns: 5 contents:
+	result := CTArray2D rows: 5 columns: 5 contents:
 		{ { max . max . max . max . max } .
 		  { max . 0 . 1 . 2 . 3 } . 
 		  { max . 1 . nil . nil . nil } .
