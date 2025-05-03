@@ -98,7 +98,6 @@ AIDamerauLevenshteinDistanceTest >> testDistanceToUsingAIDamerauLevenshteinDista
 
 ]
 
-"Fixed to call rows:columns:contents: as class method."
 { #category : 'tests' }
 AIDamerauLevenshteinDistanceTest >> testFillFirstTwoRowsAndColumns [
 	| max result |
