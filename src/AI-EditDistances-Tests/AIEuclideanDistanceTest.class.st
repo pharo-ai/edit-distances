@@ -26,7 +26,7 @@ AIEuclideanDistanceTest >> testEuclideanDistanceThreeDimensions [
 
 	self
 		assert: (metric distanceBetween: #( -5.1 4 -3.1 ) and: #( 4 5.9 -2.2 ))
-		closeTo: 9.3397
+		closeTo: 9.339700209321496
 ]
 
 { #category : '*AI-EditDistances-Tests' }
@@ -34,7 +34,7 @@ AIEuclideanDistanceTest >> testEuclideanDistanceTwoDimensions [
 
 	self
 		assert: (metric distanceBetween: #( -3.54 7 ) and: #( -11.64 9.9 ))
-		closeTo: 8.603488.
+		closeTo: 8.603487664894978.
 
 	self
 		assert: (metric distanceBetween: #( 0 1 ) and: #( 1 0))

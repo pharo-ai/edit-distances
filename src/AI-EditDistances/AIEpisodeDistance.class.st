@@ -49,7 +49,7 @@ AIEpisodeDistance >> longestCommonSubsequenceLength: firstString and: secondStri
 	m := firstString size.
 	n := secondString size.
 	
-	dp := Array2D rows: m + 1 columns: n + 1.
+	dp := CTArray2D rows: m + 1 columns: n + 1.
 	1 to: m + 1 do: [ :i | dp at: i at: 1 put: 0 ].
 	1 to: n + 1 do: [ :j | dp at: 1 at: j put: 0 ].
 	

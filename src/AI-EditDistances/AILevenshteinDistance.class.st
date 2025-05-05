@@ -30,19 +30,18 @@ AILevenshteinDistance >> distanceBetween: firstString and: secondString [
 { #category : 'private' }
 AILevenshteinDistance >> distanceMatrixBasedOn: firstString and: secondString [
 
-	| distanceMatrix |
-	"Changed from CTArray2D to Array2D to fix undeclared variable error"
-	distanceMatrix := Array2D
-		rows: secondString size + 1
+    | distanceMatrix |
+    distanceMatrix := CTArray2D
+        rows: secondString size + 1
 		columns: firstString size + 1.
 
-	self fillFirstRowAndColumn: distanceMatrix.
-	
-	self fillStartingFromSecondRowAndColumn: distanceMatrix
-		basedOn: firstString
-		and: secondString.
-		
-	^ distanceMatrix
+    self fillFirstRowAndColumn: distanceMatrix.
+
+    self fillStartingFromSecondRowAndColumn: distanceMatrix
+        basedOn: firstString
+        and: secondString.
+
+    ^ distanceMatrix
 ]
 
 { #category : 'private' }
