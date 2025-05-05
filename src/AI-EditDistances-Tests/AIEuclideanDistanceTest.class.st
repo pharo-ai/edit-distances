@@ -40,3 +40,31 @@ AIEuclideanDistanceTest >> testEuclideanDistanceTwoDimensions [
 		assert: (metric distanceBetween: #( 0 1 ) and: #( 1 0))
 		closeTo: 2 sqrt
 ]
+
+{ #category : '*AI-EditDistances-Tests' }
+AIEuclideanDistanceTest >> testEmptyCollections [
+
+	"Tests that the Euclidean distance between two empty collections is 0."
+	self assert: (metric distanceBetween: #() and: #()) equals: 0.
+]
+
+{ #category : '*AI-EditDistances-Tests' }
+AIEuclideanDistanceTest >> testIdenticalCollections [
+
+	"Tests that the Euclidean distance between identical collections is 0."
+	self assert: (metric distanceBetween: #(1 2 3) and: #(1 2 3)) equals: 0.
+]
+
+{ #category : '*AI-EditDistances-Tests' }
+AIEuclideanDistanceTest >> testDifferentLengths [
+
+	"Tests that an error is raised for collections of different lengths."
+	self should: [ metric distanceBetween: #(1 2) and: #(1 2 3) ] raise: Error.
+]
+
+{ #category : '*AI-EditDistances-Tests' }
+AIEuclideanDistanceTest >> testNonNumericInputs [
+
+	"Tests that an error is raised for non-numeric inputs."
+	self should: [ metric distanceBetween: #(1 'a' 3) and: #(1 2 3) ] raise: Error.
+]
