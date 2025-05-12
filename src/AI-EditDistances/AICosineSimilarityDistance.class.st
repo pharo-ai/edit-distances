@@ -12,8 +12,26 @@ Class {
 }
 
 { #category : 'api' }
+AICosineSimilarityDistance >> distanceBetween: anArray and: anotherArray [
+	| num size1 size2 |
+
+	num := (anArray * anotherArray) sum.
+	size1 := (anArray * anArray) sum sqrt.
+	size2 := (anotherArray * anotherArray) sum sqrt.
+
+	^ num / (size1 * size2)
+
+]
+
+{ #category : 'api' }
 AICosineSimilarityDistance >> distanceBetween: firstCollection and: secondCollection[
     | dotProduct normA normB |
+    firstCollection size = secondCollection size ifFalse: [ 
+        self error: 'Collections must have the same length' ].
+    (firstCollection allSatisfy: [ :x | x isNumber ]) ifFalse: [ 
+        self error: 'First collection contains non-numeric elements' ].
+    (secondCollection allSatisfy: [ :x | x isNumber ]) ifFalse: [ 
+        self error: 'Second collection contains non-numeric elements' ].
     dotProduct := (firstCollection with: secondCollection collect: [ :a :b | a * b ]) sum.
     normA := (firstCollection collect: [ :x | x * x ]) sum sqrt.
     normB := (secondCollection collect: [ :x | x * x ]) sum sqrt.
