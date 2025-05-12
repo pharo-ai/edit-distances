@@ -12,13 +12,12 @@ Class {
 }
 
 { #category : 'api' }
-AICosineSimilarityDistance >> distanceBetween: anArray and: anotherArray [
-	| num size1 size2 |
-
-	num := (anArray * anotherArray) sum.
-	size1 := (anArray * anArray) sum sqrt.
-	size2 := (anotherArray * anotherArray) sum sqrt.
-	
-	^ num / (size1 * size2)
-	
+AICosineSimilarityDistance >> distanceBetween: firstCollection and: secondCollection[
+    | dotProduct normA normB |
+    dotProduct := (firstCollection with: secondCollection collect: [ :a :b | a * b ]) sum.
+    normA := (firstCollection collect: [ :x | x * x ]) sum sqrt.
+    normB := (secondCollection collect: [ :x | x * x ]) sum sqrt.
+    (normA = 0 and: [ normB = 0 ])
+        ifTrue: [ ^ 1.0 ] "Zero vectors are considered identical."
+        ifFalse: [ ^ dotProduct / (normA * normB) ]
 ]
