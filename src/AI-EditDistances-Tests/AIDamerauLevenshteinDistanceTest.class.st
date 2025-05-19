@@ -100,15 +100,28 @@ AIDamerauLevenshteinDistanceTest >> testDistanceToUsingAIDamerauLevenshteinDista
 
 { #category : 'tests' }
 AIDamerauLevenshteinDistanceTest >> testFillFirstTwoRowsAndColumns [
+	
 	| max result |
-	damerauLevenshtein distanceMatrix: (CTArray2D rows: 5 columns: 5).
+	damerauLevenshtein distanceMatrix: (CTArray2D width: 5 height: 5).
 	max := 10.
-	result := CTArray2D rows: 5 columns: 5 contents:
-		{ { max . max . max . max . max } .
-		  { max . 0 . 1 . 2 . 3 } . 
-		  { max . 1 . nil . nil . nil } .
-		  { max . 2 . nil . nil . nil } .
-		  { max . 3 . nil . nil . nil } } flattened.
+	
+	result := CTArray2D width: 5 height: 5.
+	result atAllPut: nil.
+	
+	1 to: 5 do: [:i | 
+		result atColumn: 1 atRow: i put: max.
+		result atColumn: i atRow: 1 put: max.
+	].
+	
+	result atColumn: 2 atRow: 2 put: 0.
+	result atColumn: 3 atRow: 2 put: 1.
+	result atColumn: 4 atRow: 2 put: 2.
+	result atColumn: 5 atRow: 2 put: 3.
+	
+	result atColumn: 2 atRow: 3 put: 1.
+	result atColumn: 2 atRow: 4 put: 2.
+	result atColumn: 2 atRow: 5 put: 3.
+	
 	damerauLevenshtein fillFirstTwoRowsAndColumnsWith: 'AAAAA' and: 'BBBBB'.
 	self assert: damerauLevenshtein distanceMatrix equals: result
 ]
