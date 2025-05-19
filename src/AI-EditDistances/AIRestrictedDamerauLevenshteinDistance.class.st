@@ -77,7 +77,7 @@ AIRestrictedDamerauLevenshteinDistance >> fillCellInMatrix: aMatrix at: i at: j 
 ]
 
 { #category : 'private' }
-AIRestrictedDamerauLevenshteinDistance >> fillFirstRowAndColumn: distanceMatrix[
+AIRestrictedDamerauLevenshteinDistance >> fillFirstRowAndColumn: distanceMatrix [
     "Initialize the first row and column of the distance matrix with incremental values."
     1 to: distanceMatrix height do: [ :i |
         distanceMatrix atColumn: 1 atRow: i put: i - 1 ].
