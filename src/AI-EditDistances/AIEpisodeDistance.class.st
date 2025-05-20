@@ -48,18 +48,24 @@ AIEpisodeDistance >> longestCommonSubsequenceLength: firstString and: secondStri
 	| m n dp |
 	m := firstString size.
 	n := secondString size.
-	
-	dp := CTArray2D rows: m + 1 columns: n + 1.
-	1 to: m + 1 do: [ :i | dp at: i at: 1 put: 0 ].
-	1 to: n + 1 do: [ :j | dp at: 1 at: j put: 0 ].
-	
+
+	dp := CTArray2D width: n + 1 height: m + 1.
+
+	1 to: m + 1 do: [ :i | dp atColumn: 1 atRow: i put: 0 ].
+	1 to: n + 1 do: [ :j | dp atColumn: j atRow: 1 put: 0 ].
+
 	1 to: m do: [ :i |
 		1 to: n do: [ :j |
 			(firstString at: i) = (secondString at: j)
-				ifTrue: [ dp at: i + 1 at: j + 1 put: ((dp at: i at: j) + 1) ]
-				ifFalse: [ dp at: i + 1 at: j + 1 put: ((dp at: i + 1 at: j) max: (dp at: i at: j + 1)) ]
-		]
-	].
-	
-	^ dp at: m + 1 at: n + 1
+				ifTrue: [
+				dp atColumn: j + 1 atRow: i + 1 put: (dp atColumn: j atRow: i) + 1 ]
+				ifFalse: [
+					dp
+						atColumn: j + 1
+						atRow: i + 1
+						put:
+						((dp atColumn: j atRow: i + 1) max:
+							 (dp atColumn: j + 1 atRow: i)) ] ] ].
+
+	^ dp atColumn: n + 1 atRow: m + 1
 ]
