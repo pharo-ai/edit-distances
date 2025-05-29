@@ -1,3 +1,29 @@
+"
+Jensen-Shannon Distance Algorithm
+The Jensen-Shannon distance is a metric derived from the Jensen-Shannon divergence, which measures the similarity between two probability distributions. It is symmetric, always finite, 
+and produces values between 0 and 1, where 0 indicates identical strings and 1 indicates maximum dissimilarity.
+
+For string comparison:
+1. We convert strings to probability distributions
+2. Calculate the Jensen-Shannon divergence between these distributions
+3. Take the square root to get the distance
+
+The Jensen-Shannon distance is calculated as:
+   JS_Distance(P, Q) = sqrt(JS_Divergence(P, Q))
+
+where the Jensen-Shannon Divergence is:
+   JS_Divergence(P, Q) = 1/2 * KL(P || M) + 1/2 * KL(Q || M)
+
+where:
+   - M = 1/2 * (P + Q) is the pointwise mean of the distributions
+   - KL is the Kullback-Leibler divergence
+
+Examples:
+jsDistance := AIJensenShannonDistance new.
+jsDistance distanceBetween: 'ABCD' and: 'ABCE'.  """"Returns: a value close to 0.5""""
+jsDistance distanceBetween: 'AAAA' and: 'AAAA'.  """"Returns: 0.0""""
+jsDistance distanceBetween: 'AAAA' and: 'BBBB'.  """"Returns: 1.0""""
+"
 Class {
 	#name : 'AIJensenShannonDistance',
 	#superclass : 'AIAbstractEditDistance',
