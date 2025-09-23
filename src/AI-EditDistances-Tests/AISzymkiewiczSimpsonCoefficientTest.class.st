@@ -18,3 +18,27 @@ AISzymkiewiczSimpsonCoefficientTest >> testSzymkiewiczSimpsonDistanceTo [
 
 	self assert: (metric distanceBetween: #( 12 34 56 7 2 3 ) asSet and: #( 3 5 43 ) asSet) closeTo: 0.33333333333.
 ]
+
+{ #category : 'tests' }
+AISzymkiewiczSimpsonCoefficientTest >> testEmptySets [
+	"Checks that the Szymkiewicz-Simpson coefficient for empty sets is 1.0."
+	| metric |
+	metric := AISzymkiewiczSimpsonDistance new.
+	self assert: (metric distanceBetween: #() asSet and: #() asSet) equals: 1.0.
+]
+
+{ #category : 'tests' }
+AISzymkiewiczSimpsonCoefficientTest >> testIdenticalSets [
+	"Checks that the Szymkiewicz-Simpson coefficient for identical sets is 1.0."
+	| metric |
+	metric := AISzymkiewiczSimpsonDistance new.
+	self assert: (metric distanceBetween: #(1 2 3) asSet and: #(1 2 3) asSet) equals: 1.0.
+]
+
+{ #category : 'tests' }
+AISzymkiewiczSimpsonCoefficientTest >> testDisjointSets [
+	"Checks that the Szymkiewicz-Simpson coefficient for disjoint sets is 0.0."
+	| metric |
+	metric := AISzymkiewiczSimpsonDistance new.
+	self assert: (metric distanceBetween: #(1 2 3) asSet and: #(4 5 6) asSet) equals: 0.0.
+]

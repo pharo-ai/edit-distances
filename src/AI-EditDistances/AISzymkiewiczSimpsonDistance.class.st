@@ -12,10 +12,15 @@ Class {
 }
 
 { #category : 'api' }
-AISzymkiewiczSimpsonDistance >> distanceBetween: aSet and: anotherSet [
+AISzymkiewiczSimpsonDistance >> distanceBetween: firstSet and: secondSet [
 
 	| intersection minSize |
-	intersection := (aSet intersection: anotherSet ) size.
-	minSize := aSet size min: anotherSet size.
-	^ (intersection / minSize) asFloat
+    
+    (firstSet isEmpty and: [ secondSet isEmpty ]) ifTrue: [ ^ 1.0 ].
+    
+    intersection := firstSet intersection: secondSet.
+    minSize := (firstSet size min: secondSet size).
+    minSize = 0 ifTrue: [ ^ 0.0 ].
+    
+    ^ intersection size / minSize
 ]
