@@ -15,7 +15,7 @@ AIRestrictedDamerauLevenshteinDistanceTest >> setUp [
 	levenshteinRestricted := AIRestrictedDamerauLevenshteinDistance new
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIRestrictedDamerauLevenshteinDistanceTest >> testDistanceToUsingAIRestrictedDamerauLevenshteinDistance [
 
 
@@ -37,7 +37,7 @@ AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceEmpty
 
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceOneAddOneSwap [
 
 	self assert: (levenshteinRestricted distanceBetween: 'an act' and: 'a cat') equals: 2.
@@ -61,25 +61,25 @@ AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceRemov
 	self assert: (levenshteinRestricted distanceBetween: 'HONDA' and: '') equals: 5.
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoAdds [
 
 	self assert: (levenshteinRestricted distanceBetween: 'agag' and: 'aggaag') equals: 2.
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoReplacesOneAddOneSwap [
 
 	self assert: (levenshteinRestricted distanceBetween: 'HONDA' and: 'HYUNADI') equals: 4.
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoSwapsThreeReplaces [
 
 	self assert: (levenshteinRestricted distanceBetween: 'agaaloli' and: 'gananail') equals: 5.
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoSwapsTwoReplaces [
 
 	self assert: (levenshteinRestricted distanceBetween: 'hannah' and: 'nahhan') equals: 4.

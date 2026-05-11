@@ -30,7 +30,7 @@ AIDamerauLevenshteinDistanceTest >> testDamerauDistanceEmptyStrings [
 
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceOneAddOneSwap [
 
 	self assert: (damerauLevenshtein distanceBetween: 'a cat' and: 'a abct') equals: 2.
@@ -48,7 +48,7 @@ AIDamerauLevenshteinDistanceTest >> testDamerauDistanceOneSwap [
 	self assert: (damerauLevenshtein distanceBetween: 'AZ' and: 'ZA') equals: 1.
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceOneSwapOneDeletion [
 
 	self assert: (damerauLevenshtein distanceBetween: 'abbbc' and: 'cbba') equals: 2.
@@ -60,37 +60,37 @@ AIDamerauLevenshteinDistanceTest >> testDamerauDistanceRemoveAll [
 	self assert: (damerauLevenshtein distanceBetween: 'HONDA' and: '') equals: 5.
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceThreeSwapsOneDeletion [
 
 	self assert: (damerauLevenshtein distanceBetween: 'abcccabcccde' and: 'cccbabaedcc') equals: 7.
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceTwoReplacesOneAddOneSwap [
 
 	self assert: (damerauLevenshtein distanceBetween: 'HONDA' and: 'HYUNADI') equals: 4.
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceTwoSwapsOneDeletion [
 
 	self assert: (damerauLevenshtein distanceBetween: 'abcba' and: 'baab') equals: 3.
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceTwoSwapsThreeReplaces [
 
 	self assert: (damerauLevenshtein distanceBetween: 'agaaloli' and: 'gananail') equals: 5.
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIDamerauLevenshteinDistanceTest >> testDamerauDistanceTwoSwapsTwoReplaces [
 
 	self assert: (damerauLevenshtein distanceBetween: 'hannah' and: 'nahhan') equals: 4.
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIDamerauLevenshteinDistanceTest >> testDistanceToUsingAIDamerauLevenshteinDistance [
 
 

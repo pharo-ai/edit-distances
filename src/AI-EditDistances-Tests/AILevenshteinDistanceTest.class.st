@@ -58,11 +58,11 @@ AILevenshteinDistanceTest >> testDistanceTwoAddOneReplace [
 ]
 
 { #category : 'tests' }
-AILevenshteinDistanceTest >> testInsertion[
+AILevenshteinDistanceTest >> testInsertion [
     self assert: (levenshteinDistance distanceBetween: 'cat' and: 'cats') equals: 1.
 ]
 
 { #category : 'tests' }
-AILevenshteinDistanceTest >> testUnicode[
+AILevenshteinDistanceTest >> testUnicode [
     self assert: (levenshteinDistance distanceBetween: 'café' and: 'caffè') equals: 2.
 ]

@@ -15,7 +15,7 @@ AIBrewDistanceTest >> setUp [
 	metric := AIBrewDistance new
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIBrewDistanceTest >> testBrewDistanceDifferentStrings [
 
 	self 
@@ -23,7 +23,7 @@ AIBrewDistanceTest >> testBrewDistanceDifferentStrings [
 		equals: 3.
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIBrewDistanceTest >> testBrewDistanceEmptyStrings [
 
 	self 
@@ -32,7 +32,7 @@ AIBrewDistanceTest >> testBrewDistanceEmptyStrings [
 	
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIBrewDistanceTest >> testBrewDistanceSameStrings [
 
 	self 
@@ -41,7 +41,7 @@ AIBrewDistanceTest >> testBrewDistanceSameStrings [
 	
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIBrewDistanceTest >> testBrewDistanceUnicodeStrings [
 
 	self 

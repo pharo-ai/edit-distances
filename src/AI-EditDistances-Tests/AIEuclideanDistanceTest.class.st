@@ -15,13 +15,27 @@ AIEuclideanDistanceTest >> setUp [
 	metric := AIEuclideanDistance new
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
+AIEuclideanDistanceTest >> testDifferentLengths [
+
+	"Tests that an error is raised for collections of different lengths."
+	self should: [ metric distanceBetween: #(1 2) and: #(1 2 3) ] raise: Error.
+]
+
+{ #category : 'as yet unclassified' }
+AIEuclideanDistanceTest >> testEmptyCollections [
+
+	"Tests that the Euclidean distance between two empty collections is 0."
+	self assert: (metric distanceBetween: #() and: #()) equals: 0.
+]
+
+{ #category : 'as yet unclassified' }
 AIEuclideanDistanceTest >> testEuclideanDistanceFourDimensions [
 
 	self assert: (metric distanceBetween: #(0 3 4 5) and: #(7 6 3 -1)) closeTo: 9.74679434481
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIEuclideanDistanceTest >> testEuclideanDistanceThreeDimensions [
 
 	self
@@ -29,7 +43,7 @@ AIEuclideanDistanceTest >> testEuclideanDistanceThreeDimensions [
 		closeTo: 9.339700209321496
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIEuclideanDistanceTest >> testEuclideanDistanceTwoDimensions [
 
 	self
@@ -41,28 +55,14 @@ AIEuclideanDistanceTest >> testEuclideanDistanceTwoDimensions [
 		closeTo: 2 sqrt
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
-AIEuclideanDistanceTest >> testEmptyCollections [
-
-	"Tests that the Euclidean distance between two empty collections is 0."
-	self assert: (metric distanceBetween: #() and: #()) equals: 0.
-]
-
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIEuclideanDistanceTest >> testIdenticalCollections [
 
 	"Tests that the Euclidean distance between identical collections is 0."
 	self assert: (metric distanceBetween: #(1 2 3) and: #(1 2 3)) equals: 0.
 ]
 
-{ #category : '*AI-EditDistances-Tests' }
-AIEuclideanDistanceTest >> testDifferentLengths [
-
-	"Tests that an error is raised for collections of different lengths."
-	self should: [ metric distanceBetween: #(1 2) and: #(1 2 3) ] raise: Error.
-]
-
-{ #category : '*AI-EditDistances-Tests' }
+{ #category : 'as yet unclassified' }
 AIEuclideanDistanceTest >> testNonNumericInputs [
 
 	"Tests that an error is raised for non-numeric inputs."
