@@ -7,8 +7,8 @@ This distance differs from the classical Levenshtein distance by including trans
 Class {
 	#name : 'AIRestrictedDamerauLevenshteinDistance',
 	#superclass : 'AIAbstractEditDistance',
-	#category : 'AI-EditDistances-Distances',
-	#package : 'AI-EditDistances',
+	#category : 'AI-Restricted-Damerau-Levenshtein-Distance-Distances',
+	#package : 'AI-Restricted-Damerau-Levenshtein-Distance',
 	#tag : 'Distances'
 }
 

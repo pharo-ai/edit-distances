@@ -6,8 +6,8 @@ More info: [Manhattan distance](https://computervision.fandom.com/wiki/Manhattan
 Class {
 	#name : 'AIManhattanDistance',
 	#superclass : 'AIAbstractEditDistance',
-	#category : 'AI-EditDistances-Distances',
-	#package : 'AI-EditDistances',
+	#category : 'AI-Manhattan-Distance-Distances',
+	#package : 'AI-Manhattan-Distance',
 	#tag : 'Distances'
 }
 

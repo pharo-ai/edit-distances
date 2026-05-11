@@ -26,8 +26,8 @@ Class {
 	#instVars : [
 		'cost'
 	],
-	#category : 'AI-EditDistances-Distances',
-	#package : 'AI-EditDistances',
+	#category : 'AI-Brew-Distance-Distances',
+	#package : 'AI-Brew-Distance',
 	#tag : 'Distances'
 }
 

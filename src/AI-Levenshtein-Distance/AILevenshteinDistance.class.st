@@ -6,8 +6,8 @@ More info on: [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_d
 Class {
 	#name : 'AILevenshteinDistance',
 	#superclass : 'AIAbstractEditDistance',
-	#category : 'AI-EditDistances-Distances',
-	#package : 'AI-EditDistances',
+	#category : 'AI-Levenshtein-Distance-Distances',
+	#package : 'AI-Levenshtein-Distance',
 	#tag : 'Distances'
 }
 

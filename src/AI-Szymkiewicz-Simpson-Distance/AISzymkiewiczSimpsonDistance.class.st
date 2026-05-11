@@ -6,8 +6,8 @@ More info: [Overlap coefficient](https://en.wikipedia.org/wiki/Overlap_coefficie
 Class {
 	#name : 'AISzymkiewiczSimpsonDistance',
 	#superclass : 'AIAbstractEditDistance',
-	#category : 'AI-EditDistances-Distances',
-	#package : 'AI-EditDistances',
+	#category : 'AI-Szymkiewicz-Simpson-Distance-Distances',
+	#package : 'AI-Szymkiewicz-Simpson-Distance',
 	#tag : 'Distances'
 }
 

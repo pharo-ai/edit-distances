@@ -6,8 +6,8 @@ More info on: [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_dista
 Class {
 	#name : 'AIEuclideanDistance',
 	#superclass : 'AIAbstractEditDistance',
-	#category : 'AI-EditDistances-Distances',
-	#package : 'AI-EditDistances',
+	#category : 'AI-Euclidean-Distance-Distances',
+	#package : 'AI-Euclidean-Distance',
 	#tag : 'Distances'
 }
 

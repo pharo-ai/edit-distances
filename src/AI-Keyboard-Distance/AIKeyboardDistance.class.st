@@ -24,8 +24,8 @@ Class {
 	#instVars : [
 		'keyboardLayout'
 	],
-	#category : 'AI-EditDistances-Distances',
-	#package : 'AI-EditDistances',
+	#category : 'AI-Keyboard-Distance-Distances',
+	#package : 'AI-Keyboard-Distance',
 	#tag : 'Distances'
 }
 

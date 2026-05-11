@@ -7,8 +7,8 @@ Class {
 	#instVars : [
 		'p'
 	],
-	#category : 'AI-EditDistances-Distances',
-	#package : 'AI-EditDistances',
+	#category : 'AI-Hamming-Distance-Distances',
+	#package : 'AI-Hamming-Distance',
 	#tag : 'Distances'
 }
 

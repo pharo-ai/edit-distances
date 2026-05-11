@@ -12,8 +12,8 @@ Class {
 		'slidingWindowSize',
 		'maxEncodingSize'
 	],
-	#category : 'AI-EditDistances-Distances',
-	#package : 'AI-EditDistances',
+	#category : 'AI-Shingles-Similarity-Distances',
+	#package : 'AI-Shingles-Similarity',
 	#tag : 'Distances'
 }
 

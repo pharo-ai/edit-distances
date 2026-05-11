@@ -21,8 +21,8 @@ episodeDistance distanceBetween: '' and: 'ABC'.  """"Returns: 3""""
 Class {
 	#name : 'AIEpisodeDistance',
 	#superclass : 'AIAbstractEditDistance',
-	#category : 'AI-EditDistances-Distances',
-	#package : 'AI-EditDistances',
+	#category : 'AI-Episode-Distance-Distances',
+	#package : 'AI-Episode-Distance',
 	#tag : 'Distances'
 }
 

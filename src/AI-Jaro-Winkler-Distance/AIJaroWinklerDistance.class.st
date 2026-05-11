@@ -34,8 +34,8 @@ Class {
 		'prefixScale',
 		'maxPrefixLength'
 	],
-	#category : 'AI-EditDistances-Distances',
-	#package : 'AI-EditDistances',
+	#category : 'AI-Jaro-Winkler-Distance-Distances',
+	#package : 'AI-Jaro-Winkler-Distance',
 	#tag : 'Distances'
 }
 

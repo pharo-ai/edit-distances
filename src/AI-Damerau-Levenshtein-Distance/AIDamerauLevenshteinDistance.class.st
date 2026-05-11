@@ -15,8 +15,8 @@ Class {
 	#classInstVars : [
 		'int'
 	],
-	#category : 'AI-EditDistances-Distances',
-	#package : 'AI-EditDistances',
+	#category : 'AI-Damerau-Levenshtein-Distance-Distances',
+	#package : 'AI-Damerau-Levenshtein-Distance',
 	#tag : 'Distances'
 }
 
