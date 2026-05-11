@@ -15,7 +15,7 @@ AIRestrictedDamerauLevenshteinDistanceTest >> setUp [
 	levenshteinRestricted := AIRestrictedDamerauLevenshteinDistance new
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'AI-Restricted-Damerau-Levenshtein-Distance-Tests' }
 AIRestrictedDamerauLevenshteinDistanceTest >> testDistanceToUsingAIRestrictedDamerauLevenshteinDistance [
 
 
@@ -37,7 +37,7 @@ AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceEmpty
 
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'AI-Restricted-Damerau-Levenshtein-Distance-Tests' }
 AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceOneAddOneSwap [
 
 	self assert: (levenshteinRestricted distanceBetween: 'an act' and: 'a cat') equals: 2.
@@ -61,25 +61,25 @@ AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceRemov
 	self assert: (levenshteinRestricted distanceBetween: 'HONDA' and: '') equals: 5.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'AI-Restricted-Damerau-Levenshtein-Distance-Tests' }
 AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoAdds [
 
 	self assert: (levenshteinRestricted distanceBetween: 'agag' and: 'aggaag') equals: 2.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'AI-Restricted-Damerau-Levenshtein-Distance-Tests' }
 AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoReplacesOneAddOneSwap [
 
 	self assert: (levenshteinRestricted distanceBetween: 'HONDA' and: 'HYUNADI') equals: 4.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'AI-Restricted-Damerau-Levenshtein-Distance-Tests' }
 AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoSwapsThreeReplaces [
 
 	self assert: (levenshteinRestricted distanceBetween: 'agaaloli' and: 'gananail') equals: 5.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'AI-Restricted-Damerau-Levenshtein-Distance-Tests' }
 AIRestrictedDamerauLevenshteinDistanceTest >> testRestrictedDamerauDistanceTwoSwapsTwoReplaces [
 
 	self assert: (levenshteinRestricted distanceBetween: 'hannah' and: 'nahhan') equals: 4.

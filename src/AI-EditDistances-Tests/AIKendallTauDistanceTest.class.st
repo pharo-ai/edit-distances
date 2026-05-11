@@ -5,7 +5,7 @@ Class {
 	#package : 'AI-EditDistances-Tests'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'AI-KendallTau-Distance-Tests' }
 AIKendallTauDistanceTest >> testDistanceToUsingAIKendallTauDistanceCNormalizer [
 
 	| kendallTauDistance |
@@ -21,7 +21,7 @@ AIKendallTauDistanceTest >> testDistanceToUsingAIKendallTauDistanceCNormalizer [
 	self assert: (kendallTauDistance distanceBetween: #( 90 24 67 49 72 ) and: #( 66 51 96 40 2 )) closeTo: 0.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'AI-KendallTau-Distance-Tests' }
 AIKendallTauDistanceTest >> testDistanceToUsingAIKendallTauDistanceDefaultNormalizer [
 
 	| kendallTauDistance |
@@ -36,7 +36,7 @@ AIKendallTauDistanceTest >> testDistanceToUsingAIKendallTauDistanceDefaultNormal
 	self assert: (kendallTauDistance distanceBetween: #( 90 24 67 49 72 ) and: #( 66 51 96 40 2 )) closeTo: 0.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'AI-KendallTau-Distance-Tests' }
 AIKendallTauDistanceTest >> testDistanceToUsingAIKendallTauDistanceNoNormalizer [
 
 	| kendallTauDistance |
