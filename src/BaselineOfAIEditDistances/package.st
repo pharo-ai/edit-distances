@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfAIEditDistances }
+Package { #name : 'BaselineOfAIEditDistances' }
