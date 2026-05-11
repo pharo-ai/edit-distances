@@ -24,8 +24,8 @@ Class {
 	#instVars : [
 		'p'
 	],
-	#category : 'AI-EditDistances-Distances',
-	#package : 'AI-EditDistances',
+	#category : 'AI-Minkowski-Distance-Distances',
+	#package : 'AI-Minkowski-Distance',
 	#tag : 'Distances'
 }
 

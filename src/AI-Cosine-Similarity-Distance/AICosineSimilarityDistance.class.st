@@ -6,8 +6,8 @@ More info: [Cosine distance](https://www.machinelearningplus.com/nlp/cosine-simi
 Class {
 	#name : 'AICosineSimilarityDistance',
 	#superclass : 'AIAbstractEditDistance',
-	#category : 'AI-EditDistances-Distances',
-	#package : 'AI-EditDistances',
+	#category : 'AI-Cosine-Similarity-Distance-Distances',
+	#package : 'AI-Cosine-Similarity-Distance',
 	#tag : 'Distances'
 }
 

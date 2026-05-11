@@ -16,8 +16,8 @@ Class {
 		'concordantPairs',
 		'willWeNormalizeTheResult'
 	],
-	#category : 'AI-EditDistances-Distances',
-	#package : 'AI-EditDistances',
+	#category : 'AI-Kendall-Tau-Distance-Distances',
+	#package : 'AI-Kendall-Tau-Distance',
 	#tag : 'Distances'
 }
 

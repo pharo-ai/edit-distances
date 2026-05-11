@@ -27,8 +27,8 @@ jsDistance distanceBetween: 'AAAA' and: 'BBBB'.  """"Returns: 1.0""""
 Class {
 	#name : 'AIJensenShannonDistance',
 	#superclass : 'AIAbstractEditDistance',
-	#category : 'AI-EditDistances-Distances',
-	#package : 'AI-EditDistances',
+	#category : 'AI-Jensen-Shannon-Distance-Distances',
+	#package : 'AI-Jensen-Shannon-Distance',
 	#tag : 'Distances'
 }
 

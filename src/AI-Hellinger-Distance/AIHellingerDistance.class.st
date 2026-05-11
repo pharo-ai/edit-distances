@@ -39,8 +39,8 @@ AIHellingerDistance new distanceBetween: p and: q.
 Class {
 	#name : 'AIHellingerDistance',
 	#superclass : 'AIAbstractEditDistance',
-	#category : 'AI-EditDistances-Distances',
-	#package : 'AI-EditDistances',
+	#category : 'AI-Hellinger-Distance-Distances',
+	#package : 'AI-Hellinger-Distance',
 	#tag : 'Distances'
 }
 
