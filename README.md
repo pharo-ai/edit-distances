@@ -34,7 +34,7 @@ This package provides methods to determine the distance between two objects, for
 ```smalltalk
 EpMonitor disableDuring: [
 	Metacello new
-		repository: 'github://pharo-ai/edit-distances/src';
+		repository: 'github://pharo-ai/edit-distances:main';
 		baseline: 'AIEditDistances';
 		load ]
 ```
@@ -46,7 +46,7 @@ If you want to add the AIEditDistances to your Metacello Baselines or Configurat
 ```smalltalk
 spec
 	baseline: 'AIEditDistances' 
-	with: [ spec repository: 'github://pharo-ai/edit-distances/src' ]
+	with: [ spec repository: 'github://pharo-ai/edit-distances:main' ]
 ```
 
 ## Implemented distances
